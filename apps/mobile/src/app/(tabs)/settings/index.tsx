@@ -1,21 +1,17 @@
+import { ThemedText, ThemedView } from '@/components/Themed';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { useTheme } from '@/contexts/ThemeContext';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function Settings() {
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Settings Screen</Text>
-    </View>
+    <ThemedView className="flex-1 p-4">
+      <ThemedText className="text-2xl font-bold mb-4">
+        Settings
+      </ThemedText>
+
+      <ThemeToggle />
+    </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});
