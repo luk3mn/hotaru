@@ -1,23 +1,20 @@
 import { Section } from '@/components/section';
 import { ThemedText, ThemedView } from '@/components/Themed';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import Toggle from '@/components/Toggle';
 import { useTheme } from '@/contexts/ThemeContext';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 export default function Settings() {
 
   const { themePreference, setTheme } = useTheme();
 
-  /**
-   * @TODO 
-   * 
-   * [ ] Corrigir a mudança de tema
-   */
   const toggleTheme = () => {
-    if (themePreference === 'dark') {
+    if (themePreference === 'system') {
       setTheme('light');
     } else if (themePreference === 'light') {
       setTheme('dark');
+    } else {
+      setTheme('light');
     }
   };
 
@@ -32,13 +29,13 @@ export default function Settings() {
         <Section.Root>
           <Section.Icon name={useTheme().theme === 'dark' ? 'moon-outline' : 'sunny-outline'} />
           <Section.Text>Modo Escuro</Section.Text>
-          <Section.Toggle status={useTheme().theme === 'dark' ? 'on' : 'off'} size={1.5} onPress={toggleTheme} />
+          <Toggle status={useTheme().theme === 'dark' ? 'on' : 'off'} onPress={toggleTheme} />
         </Section.Root>
 
         <Section.Root>
           <Section.Icon name={'language-outline'} />
           <Section.Text>Idioma</Section.Text>
-          <Section.Redirect size={1.5} onPress={() => { }} />
+          <Section.Redirect onPress={() => { }} />
         </Section.Root>
       </View>
 
@@ -47,7 +44,7 @@ export default function Settings() {
         <Section.Root>
           <Section.Icon name="notifications-outline" />
           <Section.Text>Notificação</Section.Text>
-          <Section.Toggle status="off" size={1.5} onPress={() => { }} />
+          <Toggle status={'off'} onPress={() => { }} />
         </Section.Root>
       </View>
 
@@ -56,7 +53,7 @@ export default function Settings() {
         <Section.Root>
           <Section.Icon name="alert-circle-outline" />
           <Section.Text>Sobre</Section.Text>
-          <Section.Redirect size={1.5} onPress={() => { }} />
+          <Section.Redirect onPress={() => { }} />
         </Section.Root>
       </View>
     </ThemedView>

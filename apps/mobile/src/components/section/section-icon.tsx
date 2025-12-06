@@ -1,9 +1,7 @@
-import { useTheme } from '@/contexts/ThemeContext';
 import { getColorScheme } from '@/lib/color-schema';
 import { getIconSize } from '@/lib/dimensions';
 import { Ionicons } from '@expo/vector-icons';
 import { ComponentProps } from 'react';
-import { Dimensions } from 'react-native';
 
 interface SectionIconProps {
     size?: number;
