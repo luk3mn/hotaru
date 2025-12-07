@@ -6,9 +6,10 @@ import { ComponentProps } from 'react';
 interface CardIconProps {
     size?: number;
     name: ComponentProps<typeof Ionicons>['name'];
-    flex?: number
+    flex?: number;
+    onPress?: () => void
 }
-export default function CardIcon({ name, size, flex }: CardIconProps) {
+export default function CardIcon({ name, size, flex, onPress }: CardIconProps) {
     const iconSize = getIconSize(size);
     const { schema } = getColorScheme();
     
@@ -18,6 +19,7 @@ export default function CardIcon({ name, size, flex }: CardIconProps) {
             name={name} 
             size={iconSize} 
             color={schema.icon} 
+            onPress={onPress}
             // className='bg-dark-sherbet-fade p-2 rounded-full'
         />
     )
