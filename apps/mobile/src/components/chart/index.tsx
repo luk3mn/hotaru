@@ -1,5 +1,7 @@
 import ChartDonut from "./chart-donut";
+import ChartPeriod from "./chart-period";
 
 export const Chart = {
-    Donut: ChartDonut
+    Donut: ChartDonut,
+    Period: ChartPeriod
 }

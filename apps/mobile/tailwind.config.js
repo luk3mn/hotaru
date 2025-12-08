@@ -15,6 +15,7 @@ module.exports = {
           underline: 'hsl(0, 0%, 39%)',
           icon: 'hsl(256, 40%, 76%)',
           text: 'hsl(0, 0%, 98%)',
+          warn: 'hsl(40, 100%, 50%)',
         },
         // Light theme colors (inversions and adjustments)
         light: {
@@ -26,6 +27,7 @@ module.exports = {
           underline: 'hsl(0, 0%, 75%)',
           icon: 'hsl(256, 40%, 55%)',
           text: 'hsl(288, 6%, 16%)',
+          warn: 'hsl(40, 100%, 50%)',
         },
       },
     },

@@ -13,6 +13,9 @@ export const colors = {
         chartThree: 'hsl(133, 58%, 49%)',
         chartFour: 'hsl(251, 61%, 60%)',
         chartFive: 'hsl(40, 100%, 50%)',
+
+        // alerts
+        warn: 'hsl(40, 100%, 50%)',
     },
     light: {
         background: 'hsl(0, 0%, 98%)',
@@ -28,5 +31,8 @@ export const colors = {
         chartThree: 'hsl(133, 58%, 49%)',
         chartFour: 'hsl(251, 61%, 60%)',
         chartFive: 'hsl(40, 100%, 50%)',
+
+        // alerts
+        warn: 'hsl(40, 100%, 50%)',
     }
 };

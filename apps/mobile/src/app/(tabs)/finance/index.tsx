@@ -1,9 +1,12 @@
+import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Chart } from "@/components/chart";
+import { Header } from "@/components/header";
 import { ThemedText, ThemedView } from "@/components/Themed";
 import { getColorScheme } from "@/lib/color-schema";
-import { Bell, Car, UserCircleIcon } from "lucide-react-native";
-import { ScrollView, Text, View } from "react-native";
+import { router } from "expo-router";
+import { Bell, HandCoins, LucideCircleFadingPlus, ShoppingCartIcon, UserCircleIcon } from "lucide-react-native";
+import { ScrollView, View } from "react-native";
 
 export default function Finance() {
     const { schema } = getColorScheme();
@@ -19,29 +22,40 @@ export default function Finance() {
 
     return (
         <ThemedView className="flex-1 p-4">
-            <View className="flex-row justify-between items-center">
-                <ThemedText className="text-2xl font-bold mb-4 text-center">
-                    Carteira
-                </ThemedText>
-
-                <View className="flex-row items-center gap-2">
-                    <Bell size={25} color={schema.icon} />
-                    <UserCircleIcon size={30} color={schema.icon} />
-                </View>
-            </View>
+            <Header.Root>
+                <Header.Wrapper flex={1}>
+                    <Header.Title>CARTEIRA</Header.Title>
+                </Header.Wrapper>
+                <Header.Wrapper>
+                    <Button.Rounded>
+                        <Button.Badge>1</Button.Badge>
+                        <Bell size={25} color={'#fff'} />
+                    </Button.Rounded>
+                    <Button.Rounded>
+                        <UserCircleIcon size={25} color={'#fff'} />
+                    </Button.Rounded>
+                </Header.Wrapper>
+            </Header.Root>
 
             <View className="flex-[3] justify-center items-center">
-                <Chart.Donut data={data} />
+                <Chart.Donut data={data} total={1000} totalLegend="Economia">
+                    <Chart.Period selected>SEMANAL</Chart.Period>
+                    <Chart.Period>MENSAL</Chart.Period>
+                    <Chart.Period>ANUAL</Chart.Period>
+                </Chart.Donut>
             </View>
 
             <Card.Regular>
-                <Card.Wrapper direction="row">
-                    <Card.Wrapper direction="row" flex={1}>
-                        <Card.Icon name="pie-chart-outline" />
-                        <Card.Icon name="cash-outline" />
-                        <Card.Icon name="cash-outline" />
+                <Card.Wrapper direction="row" align="center">
+                    <Card.Wrapper direction="row" align="center" flex={1}>
+                        <Button.Rounded>
+                            <HandCoins size={25} color={'#fff'} />
+                        </Button.Rounded>
+                        <Button.Rounded onPress={() => router.push('/finance/shopping')}>
+                            <ShoppingCartIcon size={25} color={'#fff'} />
+                        </Button.Rounded>
                     </Card.Wrapper>
-                    <Card.Icon name="add-circle" onPress={() => console.log("OPENNED")} />
+                    <LucideCircleFadingPlus size={25} color={schema.icon} />
                 </Card.Wrapper>
             </Card.Regular>
             <ScrollView horizontal className="flex-[1]" pagingEnabled>
