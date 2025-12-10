@@ -1,14 +1,16 @@
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import "./../../global.css"
+import "./../../global.css";
+import { LanguageProvider } from '@/contexts/LanguageContext';
 export default function RootLayout() {
   return (
     <ThemeProvider>
+      <LanguageProvider>
         <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="(tabs)" />
         </Stack>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

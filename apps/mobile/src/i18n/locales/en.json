@@ -1,0 +1,25 @@
+{
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "home": {
+        "welcome": "Welcome back"
+    },
+    "settings": {
+        "title": "Settings",
+        "general": {
+            "title": "General",
+            "theme": "Dark Mode",
+            "language": "Language"
+        },
+        "alerts": {
+            "title": "Alerts",
+            "notification": "Notification"
+        },
+        "others": {
+            "title": "Others",
+            "about": "About"
+        }
+    }
+}

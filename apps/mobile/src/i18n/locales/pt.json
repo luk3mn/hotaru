@@ -1,0 +1,26 @@
+{
+    "common": {
+        "save": "Salvar",
+        "cancel": "Cancelar"
+    },
+    "home": {
+        "welcome": "Bem-vindo"
+    },
+    "settings": {
+        "title": "Configurações",
+        "general": {
+            "title": "Geral",
+            "theme": "Modo escuro",
+            "language": "Idioma"
+        },
+        "alerts": {
+            "title": "Alertas",
+            "notification": "Notificação"
+        },
+        "others": {
+            "title": "Outros",
+            "about": "Sobre"
+        }
+    }
+}
+
