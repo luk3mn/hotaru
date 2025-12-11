@@ -1,14 +1,18 @@
+import { Modal } from '@/components/modal';
 import { Section } from '@/components/section';
 import { ThemedText, ThemedView } from '@/components/Themed';
 import Toggle from '@/components/Toggle';
-import { useTranslation } from '@/contexts/LanguageContext';
+import { useLanguage, useTranslation } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import { View } from 'react-native';
+import { useState } from 'react';
+import { Button, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Settings() {
+  const [visibleLanguageOptions, setVisibleLanguageOptions] = useState(false);
 
   const { themePreference, setTheme } = useTheme();
   const { t } = useTranslation();
+  const { currentLanguage, availableLanguages, changeLanguage } = useLanguage();
 
   const toggleTheme = () => {
     if (themePreference === 'system') {
@@ -37,7 +41,7 @@ export default function Settings() {
         <Section.Root>
           <Section.Icon name={'language-outline'} />
           <Section.Text>{t('settings.general.language')}</Section.Text>
-          <Section.Redirect onPress={() => { }} />
+          <Section.Redirect onPress={() => setVisibleLanguageOptions(true)} />
         </Section.Root>
       </View>
 
@@ -58,6 +62,41 @@ export default function Settings() {
           <Section.Redirect onPress={() => { }} />
         </Section.Root>
       </View>
+      <Modal.Root visible={visibleLanguageOptions} onClose={() => setVisibleLanguageOptions(false)}>
+        <Modal.Header title={t('settings.general.language')} />
+        <Modal.Scroll>
+          {availableLanguages.map((language) => {
+            const isSelected = language.code === currentLanguage.code;
+            
+            return (
+              <TouchableOpacity
+                key={language.code}
+                onPress={() => changeLanguage(language.code)}
+                style={[
+                  {
+                    flexDirection: 'row',
+                    gap: 10,
+                    padding: 10,
+                    margin: 5,
+                    // width: 40,
+                    // height: 40,
+                    borderRadius: 20,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  },
+                  {
+                    backgroundColor: isSelected ? '#fff' : 'transparent',
+                    borderColor: isSelected ? '#fff' : 'transparent',
+                  }
+                ]}
+              >
+                <Text style={{ fontSize: 20 }}>{language.flag}</Text>
+                <Text style={{ fontSize: 20 }}>{language.name}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </Modal.Scroll>
+      </Modal.Root>
     </ThemedView>
   );
 }
