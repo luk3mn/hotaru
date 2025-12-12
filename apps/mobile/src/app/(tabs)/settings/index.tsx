@@ -1,7 +1,7 @@
 import { Modal } from '@/components/modal';
 import { Section } from '@/components/section';
-import { ThemedText, ThemedView } from '@/components/Themed';
-import Toggle from '@/components/Toggle';
+import { ThemedText, ThemedView } from '@/components/themed';
+import Toggle from '@/components/toggle';
 import { useLanguage, useTranslation } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState } from 'react';
@@ -31,7 +31,7 @@ export default function Settings() {
       </View>
 
       <View className='mt-4 mb-4'>
-        <ThemedText className='text-xl font-bold ml-2'>Geral</ThemedText>
+        <ThemedText className='text-xl font-bold ml-2'>{t('settings.general.title')}</ThemedText>
         <Section.Root>
           <Section.Icon name={useTheme().theme === 'dark' ? 'moon-outline' : 'sunny-outline'} />
           <Section.Text>{t('settings.general.theme')}</Section.Text>
@@ -46,7 +46,7 @@ export default function Settings() {
       </View>
 
       <View className='mt-4 mb-4'>
-        <ThemedText className='text-xl font-bold ml-2'>Alertas</ThemedText>
+        <ThemedText className='text-xl font-bold ml-2'>{t('settings.alerts.title')}</ThemedText>
         <Section.Root>
           <Section.Icon name="notifications-outline" />
           <Section.Text>{t('settings.alerts.notification')}</Section.Text>

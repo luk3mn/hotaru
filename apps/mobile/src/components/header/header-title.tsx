@@ -1,4 +1,5 @@
-import { ThemedText } from "../Themed";
+import { ThemedText } from "../themed";
+
 
 
 export default function HeaderTitle({ children }: { children: React.ReactNode }) {

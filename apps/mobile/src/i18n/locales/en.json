@@ -21,5 +21,26 @@
             "title": "Others",
             "about": "About"
         }
+    },
+    "finance": {
+        "title": "Finance",
+        "chart": {
+            "title": "Saving",
+            "period": {
+                "daily": "Dayly",
+                "weekly": "Weekly",
+                "monthly": "Monthly",
+                "yearly": "Yearly"
+            }
+        },
+        "category": {
+            "incomes": "Incomes",
+            "expenses": "Expenses",
+            "investments": "Investments"
+        }
+        
+    },
+    "shopping": {
+        "title": "Shopping"
     }
 }

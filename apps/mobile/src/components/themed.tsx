@@ -1,5 +1,4 @@
-// src/components/Themed.tsx
-import { View, Text, ViewProps, TextProps } from 'react-native';
+import { Text, ViewProps, TextProps } from 'react-native';
 import { useTheme } from '@/contexts/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

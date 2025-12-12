@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { Text } from "react-native";
-import { ThemedText } from "../Themed";
+import { ThemedText } from "../themed";
 
 interface SectionTextProps {
     children: ReactNode,

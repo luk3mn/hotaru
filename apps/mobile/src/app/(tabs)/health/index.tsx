@@ -1,4 +1,4 @@
-import { ThemedText, ThemedView } from "@/components/Themed";
+import { ThemedText, ThemedView } from "@/components/themed";
 import { Text, View } from "react-native";
 
 export default function Health() {

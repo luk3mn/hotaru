@@ -1,6 +1,6 @@
 import { Button } from "@/components/button";
 import { Header } from "@/components/header";
-import { ThemedText, ThemedView } from "@/components/Themed";
+import { ThemedText, ThemedView } from "@/components/themed";
 import { UserCircleIcon } from "lucide-react-native";
 
 export default function Shopping() {

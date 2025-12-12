@@ -21,6 +21,25 @@
             "title": "Outros",
             "about": "Sobre"
         }
+    },
+    "finance": {
+        "title": "Finanças",
+        "chart": {
+            "title": "Economias",
+            "period": {
+                "daily": "Diário",
+                "weekly": "Semanal",
+                "monthly": "Mensal",
+                "yearly": "Anual"
+            }
+        },
+        "category": {
+            "incomes": "Receitas",
+            "expenses": "Despesas",
+            "investments": "Investimentos"
+        }
+    },
+    "shopping": {
+        "title": "Compras"
     }
 }
-

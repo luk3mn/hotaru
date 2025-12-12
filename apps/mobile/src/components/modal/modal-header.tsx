@@ -1,5 +1,5 @@
 import { TouchableOpacity, View } from 'react-native';
-import { ThemedText } from '../Themed';
+import { ThemedText } from '../themed';
 import { X } from 'lucide-react-native';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useModalClose } from './modal-root';

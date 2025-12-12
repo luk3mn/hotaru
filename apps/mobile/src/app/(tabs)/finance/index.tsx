@@ -2,7 +2,8 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Chart } from "@/components/chart";
 import { Header } from "@/components/header";
-import { ThemedText, ThemedView } from "@/components/Themed";
+import { ThemedText, ThemedView } from "@/components/themed";
+import { t } from "@/i18n/i18n";
 import { getColorScheme } from "@/lib/color-schema";
 import { router } from "expo-router";
 import { Bell, HandCoins, LucideCircleFadingPlus, ShoppingCartIcon, UserCircleIcon } from "lucide-react-native";
@@ -24,7 +25,7 @@ export default function Finance() {
         <ThemedView className="flex-1 p-4">
             <Header.Root>
                 <Header.Wrapper flex={1}>
-                    <Header.Title>CARTEIRA</Header.Title>
+                    <Header.Title>{t('finance.title')}</Header.Title>
                 </Header.Wrapper>
                 <Header.Wrapper>
                     <Button.Rounded>
@@ -38,10 +39,10 @@ export default function Finance() {
             </Header.Root>
 
             <View className="flex-[3] justify-center items-center">
-                <Chart.Donut data={data} total={1000} totalLegend="Economia">
-                    <Chart.Period selected>SEMANAL</Chart.Period>
-                    <Chart.Period>MENSAL</Chart.Period>
-                    <Chart.Period>ANUAL</Chart.Period>
+                <Chart.Donut data={data} total={1000} totalLegend={t('finance.chart.title')}>
+                    <Chart.Period selected>{t('finance.chart.period.weekly')}</Chart.Period>
+                    <Chart.Period>{t('finance.chart.period.monthly')}</Chart.Period>
+                    <Chart.Period>{t('finance.chart.period.yearly')}</Chart.Period>
                 </Chart.Donut>
             </View>
 
@@ -63,7 +64,7 @@ export default function Finance() {
                         <Card.Icon name="cash-outline" flex={1} />
                         <Card.Wrapper flex={0}>
                             <Card.Text>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(1000)}</Card.Text>
-                            <Card.Title>Despesas</Card.Title>
+                            <Card.Title>{t('finance.category.expenses')}</Card.Title>
                         </Card.Wrapper>
                     </Card.Regular>
 
@@ -71,7 +72,7 @@ export default function Finance() {
                         <Card.Icon name="cash-outline" flex={1} />
                         <Card.Wrapper flex={0}>
                             <Card.Text>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(1000)}</Card.Text>
-                            <Card.Title>Entradas</Card.Title>
+                            <Card.Title>{t('finance.category.incomes')}</Card.Title>
                         </Card.Wrapper>
                     </Card.Regular>
 
@@ -79,7 +80,7 @@ export default function Finance() {
                         <Card.Icon name="cash-outline" flex={1} />
                         <Card.Wrapper flex={0}>
                             <Card.Text>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(1000)}</Card.Text>
-                            <Card.Title>Investimentos</Card.Title>
+                            <Card.Title>{t('finance.category.investments')}</Card.Title>
                         </Card.Wrapper>
                     </Card.Regular>
                     
