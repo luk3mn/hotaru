@@ -1,8 +1,9 @@
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { Stack } from 'expo-router';
 import React from 'react';
-import "./../../global.css";
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import "../../global.css";
+
 export default function RootLayout() {
   return (
     <ThemeProvider>

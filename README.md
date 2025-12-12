@@ -1,376 +1,135 @@
-# Hotaru
+# Turborepo starter
 
-> Brief tagline or description of what your project does
+This Turborepo starter is maintained by the Turborepo core team.
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](package.json)
+## Using this example
 
-## 📋 Table of Contents
+Run the following command:
 
-- [Overview](#overview)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Architecture](#architecture)
-- [API Documentation](#api-documentation)
-- [Development](#development)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
-- [License](#license)
-- [Contact](#contact)
-
-## 🎯 Overview
-
-Mobile app build in react-native to help me control my finances, manage track my learning, and keep working on my health
-
-<!-- ### Key Highlights
-
-- First major highlight
-- Second major highlight
-- Third major highlight -->
-
-## ✨ Features
-
-- **Finance**: Control spendings and investment track
-<!-- - **Feature 2**: Description of feature two
-- **Feature 3**: Description of feature three
-- **Feature 4**: Description of feature four -->
-
-## 📦 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- Node.js >= 18.0.0
-- npm >= 9.0.0 or pnpm >= 8.0.0
-- Git
-- Any other specific requirements
-
-## 🚀 Installation
-
-### Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/luk3mn/hotaru.git
-
-# Navigate to project directory
-cd hotaru
-
-# Install dependencies
-bun install
-
-# # Copy environment variables
-# cp .env.example .env
-
-# Run the development server
-npx expo run:android --device
+```sh
+npx create-turbo@latest
 ```
 
-__NOTE: If build fails, try moving out the mobile project folder to outside of the turborepo before running ```npx expo run:android --device```, install the de dependencies with ```bum i```, and then move it in again and run the project once again__
+## What's inside?
 
-<!-- ### Docker Installation
+This Turborepo includes the following packages/apps:
 
-```bash
-# Build the Docker image
-docker build -t hotaru .
+### Apps and Packages
 
-# Run the container
-docker run -p 3000:3000 hotaru
-``` -->
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-<!-- ## 💻 Usage
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Basic Usage
+### Utilities
 
-Provide simple examples of how to use your project:
+This Turborepo has some additional tools already setup for you:
 
-```javascript
-import { YourModule } from 'hotaru';
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-const instance = new YourModule({
-  option1: 'value1',
-  option2: 'value2'
-});
+### Build
 
-instance.doSomething();
-```
-
-### Advanced Usage
-
-Show more complex examples with detailed explanations:
-
-```javascript
-// More sophisticated example
-const result = await instance.advancedMethod({
-  configuration: {
-    nested: 'options'
-  }
-});
-``` -->
-
-<!-- ## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Application
-APP_NAME=hotaru
-NODE_ENV=development
-PORT=3000
-
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-
-# API Keys
-API_KEY=your-api-key
-API_SECRET=your-api-secret
-```
-
-### Configuration File
-
-Explain any configuration files and their options:
-
-```json
-{
-  "setting1": "value1",
-  "setting2": {
-    "nested": "value2"
-  }
-}
-``` -->
-
-## 🏗️ Architecture
-
-Describe your project's architecture and structure:
+To build all apps and packages, run the following command:
 
 ```
-project-root/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── apps/           # Screen components
-│   ├── utils/          # Utility functions
-│   └── types/          # TypeScript types
-└── public/             # Static assets
+cd my-turborepo
+
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo build
+
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo build
+yarn dlx turbo build
+pnpm exec turbo build
 ```
 
-### Key Design Decisions
+You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
 
-Explain important architectural choices and patterns used in the project.
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo build --filter=docs
 
-<!-- ## 📚 API Documentation
-
-### Endpoints
-
-#### GET `/api/resource`
-
-Retrieve all resources.
-
-**Parameters:**
-- `limit` (optional): Number of items to return
-- `offset` (optional): Pagination offset
-
-**Response:**
-```json
-{
-  "data": [],
-  "total": 100,
-  "limit": 10,
-  "offset": 0
-}
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo build --filter=docs
+yarn exec turbo build --filter=docs
+pnpm exec turbo build --filter=docs
 ```
 
-#### POST `/api/resource`
+### Develop
 
-Create a new resource.
+To develop all apps and packages, run the following command:
 
-**Request Body:**
-```json
-{
-  "name": "Resource Name",
-  "description": "Resource description"
-}
+```
+cd my-turborepo
+
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo dev
+
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo dev
+yarn exec turbo dev
+pnpm exec turbo dev
 ```
 
-**Response:**
-```json
-{
-  "id": "123",
-  "name": "Resource Name",
-  "createdAt": "2024-01-01T00:00:00Z"
-} -->
+You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo dev --filter=web
+
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo dev --filter=web
+yarn exec turbo dev --filter=web
+pnpm exec turbo dev --filter=web
 ```
 
-## 🔧 Development
+### Remote Caching
 
-### Setting Up Development Environment
+> [!TIP]
+> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
 
-```bash
-# Install development dependencies
-bun install
+Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+
+```
+cd my-turborepo
+
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo login
+
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo login
+yarn exec turbo login
+pnpm exec turbo login
 ```
 
-<!-- ### Scripts
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run test` - Run tests
-- `npm run lint` - Lint code
-- `npm run format` - Format code with Prettier
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-### Code Style
+```
+# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+turbo link
 
-This project follows the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript). Code is automatically formatted using Prettier and linted with ESLint. -->
-
-<!-- ## 🧪 Testing
-
-### Running Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run specific test file
-npm test path/to/test.spec.ts
+# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
+npx turbo link
+yarn exec turbo link
+pnpm exec turbo link
 ```
 
-### Writing Tests
+## Useful Links
 
-Example test structure:
+Learn more about the power of Turborepo:
 
-```javascript
-describe('Component/Function Name', () => {
-  it('should do something specific', () => {
-    // Arrange
-    const input = 'test';
-    
-    // Act
-    const result = yourFunction(input);
-    
-    // Assert
-    expect(result).toBe('expected');
-  });
-}); -->
-```
-
-## 🚢 Deployment
-
-### Production Build
-
-```bash
-# Create production build
-eas build -p android --profile production
-```
-
-<!-- ### Deployment Platforms
-
-#### Vercel
-
-```bash
-npm install -g vercel
-vercel --prod
-``` -->
-
-<!-- #### Docker
-
-```bash
-docker build -t hotaru:latest .
-docker push your-registry/hotaru:latest
-``` -->
-
-### Environment-Specific Configuration
-
-Explain any differences between development, staging, and production environments.
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Contribution Guidelines
-
-- Write clear, descriptive commit messages
-- Add tests for new features
-- Update documentation as needed
-- Follow the existing code style
-- Ensure all tests pass before submitting PR
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Issue: Installation fails with dependency errors**
-
-Solution: Clear your package manager cache and try again:
-```bash
-cd android/
-./gradlew clean
-rm -rf node_modules bun.lock
-bun install
-```
-
-**Issue: Port already in use**
-
-Solution: Change the port in your `.env` file or kill the process using the port:
-```bash
-lsof -ti:8081 | xargs kill
-```
-
-<!-- ### Getting Help
-
-- Check existing [GitHub Issues](https://github.com/luk3mn/hotaru/issues)
-- Join our [Discord community](https://discord.gg/your-invite)
-- Read the [detailed documentation](https://docs.yourproject.com) -->
-
-<!-- ## ❓ FAQ
-
-**Q: Question one?**
-
-A: Answer to question one.
-
-**Q: Question two?**
-
-A: Answer to question two.
-
-**Q: How do I report a bug?**
-
-A: Please open an issue on GitHub with detailed information about the bug, including steps to reproduce it. -->
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📧 Contact
-
-- **Author**: Lucas Renan
-- **Email**: lucasnunes2030@gmail.com
-- **GitHub**: [@luk3mn](https://github.com/luk3mn)
-- **Website**: [https://lucasmaues.vercel.app/](https://lucasmaues.vercel.app/)
-
-## 🙏 Acknowledgments
-
-- Credit to libraries or resources used
-- Thanks to contributors
-- Inspiration sources
-
----
-
-Made with by [Your Name](https://github.com/luk3mn)
+- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
+- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
+- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
+- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
+- [Configuration Options](https://turborepo.com/docs/reference/configuration)
+- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
