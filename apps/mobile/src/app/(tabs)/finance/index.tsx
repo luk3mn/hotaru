@@ -6,8 +6,8 @@ import { ThemedText, ThemedView } from "@/components/themed";
 import { t } from "@/i18n/i18n";
 import { getColorScheme } from "@/lib/color-schema";
 import { router } from "expo-router";
-import { Bell, HandCoins, LucideCircleFadingPlus, ShoppingCartIcon, UserCircleIcon } from "lucide-react-native";
-import { ScrollView, View } from "react-native";
+import { Bell, HandCoins, LucideCircleFadingPlus, ShoppingBagIcon, ShoppingCartIcon, UserCircleIcon } from "lucide-react-native";
+import { ScrollView, Text, View } from "react-native";
 
 export default function Finance() {
     const { schema } = getColorScheme();
@@ -24,9 +24,7 @@ export default function Finance() {
     return (
         <ThemedView className="flex-1 p-4">
             <Header.Root>
-                <Header.Wrapper flex={1}>
-                    <Header.Title>{t('finance.title')}</Header.Title>
-                </Header.Wrapper>
+                <Header.Title>{t('finance.title')}</Header.Title>
                 <Header.Wrapper>
                     <Button.Rounded>
                         <Button.Badge>1</Button.Badge>
@@ -46,19 +44,35 @@ export default function Finance() {
                 </Chart.Donut>
             </View>
 
-            <Card.Regular>
+            {/* <Card.Regular>
                 <Card.Wrapper direction="row" align="center">
                     <Card.Wrapper direction="row" align="center" flex={1}>
                         <Button.Rounded>
                             <HandCoins size={25} color={'#fff'} />
                         </Button.Rounded>
                         <Button.Rounded onPress={() => router.push('/finance/shopping')}>
-                            <ShoppingCartIcon size={25} color={'#fff'} />
+                            <ShoppingBagIcon size={25} color={'#fff'} />
                         </Button.Rounded>
                     </Card.Wrapper>
                     <LucideCircleFadingPlus size={25} color={schema.icon} />
                 </Card.Wrapper>
-            </Card.Regular>
+            </Card.Regular> */}
+                <ScrollView horizontal>
+                    <View className="items-center">
+                        <Button.Rounded>
+                            <HandCoins size={25} color={'#fff'} />
+                        </Button.Rounded>
+                        <Text className="font-ubuntu-semibold">Gastos</Text>
+                    </View>
+                    <View>
+                        <Button.Rounded onPress={() => router.push('/finance/shopping')}>
+                            <ShoppingBagIcon size={25} color={'#fff'} />
+                        </Button.Rounded>
+                    </View>
+            {/* <View className="flex-[1] justify-center items-center">
+
+            </View> */}
+                </ScrollView>
             <ScrollView horizontal className="flex-[1]" pagingEnabled>
                     <Card.Regular>
                         <Card.Icon name="cash-outline" flex={1} />

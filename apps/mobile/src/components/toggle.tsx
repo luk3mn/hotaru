@@ -26,7 +26,7 @@ export default function Toggle({ status, size, flex, onPress }: ToggleProps) {
 
     useEffect(() => {
         progress.value = withSpring(status === 'on' ? 1 : 0, {
-            damping: 15,
+            damping: 45,
             stiffness: 150,
         });
     }, [status]);
