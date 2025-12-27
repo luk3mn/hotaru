@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { colors } from '@/constants/colors';
 import { Header } from '@/components/header';
+import { useMemo } from 'react';
 
 export default function TabLayout() {
     const { height } = Dimensions.get('window');
@@ -12,37 +13,39 @@ export default function TabLayout() {
 
     const currentColors = theme === 'dark' ? colors.dark : colors.light;
 
+    const headerComponent = useMemo(() => (
+        <Header.Status.Root>
+            <Header.Profile />
+            <Header.Wrapper flex={1} direction='column'>
+                <Header.Status.HP 
+                    current={87} 
+                    max={100}
+                />
+                <Header.Status.XP 
+                    currentXP={45} 
+                    xpToNextLevel={100} 
+                />
+            </Header.Wrapper>
+        </Header.Status.Root>
+    ), []);
+
     return (
         <>
             <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
             <Tabs
                 screenOptions={{
                     headerShown: true,
-                    header: () => (
-                        <Header.Status.Root>
-                            <Header.Profile />
-                            <Header.Wrapper flex={1} direction='column'>
-                                <Header.Status.HP 
-                                    current={87} 
-                                    max={100}
-                                />
-                                <Header.Status.XP 
-                                    currentXP={650} 
-                                    xpToNextLevel={1000}
-                                />
-                            </Header.Wrapper>
-                        </Header.Status.Root>
-                    ),
+                    header: () => headerComponent,
                     headerShadowVisible: false,
                     tabBarShowLabel: false,
                     tabBarStyle: {
-                        backgroundColor: currentColors.card,
-                        borderTopColor: currentColors.border,
+                        backgroundColor: currentColors.base,
+                        borderTopColor: currentColors.crust,
                         borderTopWidth: 1,
                         height: height * 0.08,
                     },
-                    tabBarActiveTintColor: currentColors.icon,
-                    tabBarInactiveTintColor: currentColors.iconInactive,
+                    tabBarActiveTintColor: currentColors.flamingo,
+                    tabBarInactiveTintColor: currentColors.surface0,
                 }}
             >
                 <Tabs.Screen

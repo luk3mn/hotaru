@@ -28,33 +28,82 @@ module.exports = {
         'ubuntu-bold': ['Ubuntu-Bold'],
       },
       colors: {
-        // Dark theme colors
+        // Catppuccin Mocha (Dark theme)
         dark: {
-          bg: 'hsl(288, 6%, 16%)',
-          surface: 'hsl(290, 8%, 22%)',
-          'surface-alt': 'hsl(290, 8%, 26%)',
-          mint: 'hsl(316, 30%, 36%)',
-          lilac: 'hsl(263, 29%, 32%)',
-          sherbet: 'hsl(257, 8%, 18%)',
-          'sherbet-fade': 'hsl(260, 24%, 18%)',
-          underline: 'hsl(0, 0%, 39%)',
-          icon: 'hsl(256, 40%, 76%)',
-          text: 'hsl(0, 0%, 98%)',
-          warn: 'hsl(40, 100%, 50%)',
+          // Base
+          base: '#1e1e2e',
+          mantle: '#181825',
+          crust: '#11111b',
+          
+          // Surface
+          surface0: '#313244',
+          surface1: '#45475a',
+          surface2: '#585b70',
+          
+          // Overlay
+          overlay0: '#6c7086',
+          overlay1: '#7f849c',
+          overlay2: '#9399b2',
+          
+          // Text
+          text: '#cdd6f4',
+          subtext0: '#a6adc8',
+          subtext1: '#bac2de',
+          
+          // Accent
+          rosewater: '#f5e0dc',
+          flamingo: '#f2cdcd',
+          pink: '#f5c2e7',
+          mauve: '#cba6f7',
+          red: '#f38ba8',
+          maroon: '#eba0ac',
+          peach: '#fab387',
+          yellow: '#f9e2af',
+          green: '#a6e3a1',
+          teal: '#94e2d5',
+          sky: '#89dceb',
+          sapphire: '#74c7ec',
+          blue: '#89b4fa',
+          lavender: '#b4befe',
         },
-        // Light theme colors (inversions and adjustments)
+        
+        // Catppuccin Latte (Light theme)
         light: {
-          bg: 'hsl(0, 0%, 98%)',
-          surface: 'hsl(0, 0%, 100%)',
-          'surface-alt': 'hsl(0, 0%, 95%)',
-          mint: 'hsl(316, 35%, 85%)',
-          lilac: 'hsl(263, 35%, 88%)',
-          sherbet: 'hsl(257, 15%, 95%)',
-          'sherbet-fade': 'hsl(260, 20%, 93%)',
-          underline: 'hsl(0, 0%, 75%)',
-          icon: 'hsl(256, 40%, 55%)',
-          text: 'hsl(288, 6%, 16%)',
-          warn: 'hsl(40, 100%, 50%)',
+          // Base
+          base: '#eff1f5',
+          mantle: '#e6e9ef',
+          crust: '#dce0e8',
+          
+          // Surface
+          surface0: '#ccd0da',
+          surface1: '#bcc0cc',
+          surface2: '#acb0be',
+          
+          // Overlay
+          overlay0: '#9ca0b0',
+          overlay1: '#8c8fa1',
+          overlay2: '#7c7f93',
+          
+          // Text
+          text: '#4c4f69',
+          subtext0: '#6c6f85',
+          subtext1: '#5c5f77',
+          
+          // Accent
+          rosewater: '#dc8a78',
+          flamingo: '#dd7878',
+          pink: '#d5269e',
+          mauve: '#8839ef',
+          red: '#d20f39',
+          maroon: '#e64553',
+          peach: '#fe640b',
+          yellow: '#df8e1d',
+          green: '#40a02b',
+          teal: '#179299',
+          sky: '#04a5e5',
+          sapphire: '#209fb5',
+          blue: '#1e66f5',
+          lavender: '#7287fd',
         },
       },
     },

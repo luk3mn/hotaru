@@ -14,7 +14,7 @@ export default function CardRegular({ children, onPress }: CardRegularProps) {
             style={{ width: width * 0.9 }}
             className={` 
                 p-4 m-2 rounded-lg 
-                ${theme === 'dark' ? 'bg-dark-lilac' : 'bg-light-lilac'} 
+                ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'} 
             `} 
             onPress={onPress}
         >

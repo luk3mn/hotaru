@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export function ThemedView({ className = '', ...props }: ViewProps & { className?: string }) {
   const { theme } = useTheme();
-  const themeClasses = theme === 'dark' ? 'bg-dark-bg' : 'bg-light-bg';
+  const themeClasses = theme === 'dark' ? 'bg-dark-base' : 'bg-light-base';
   
   return <SafeAreaView className={`${themeClasses} ${className}`} {...props} />;
 }

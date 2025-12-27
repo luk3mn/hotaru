@@ -5,7 +5,7 @@ export default function HeaderStatus({ children }: { children: React.ReactNode }
     const { theme } = useTheme();
 
     return (
-        <SafeAreaView className={`${theme === 'dark' ? 'bg-dark-bg' : 'bg-light-bg'} flex-row items-center`}>
+        <SafeAreaView className={`${theme === 'dark' ? 'bg-dark-base' : 'bg-light-base'} flex-row items-center`}>
             {children}
         </SafeAreaView>
     );

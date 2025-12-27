@@ -38,7 +38,7 @@ export default function CompactHealthBar({ current, max, showLabel = true, anima
         <View className='mb-2'>
             <View className="flex-row items-center gap-2 px-4 py-1">
                 <Heart color={getBarColor()} size={getIconSize(0.65)} />
-                <View className={`flex-1 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-dark-surface-alt' : 'bg-light-surface-alt'}`}>
+                <View className={`flex-1 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'}`}>
                     <Animated.View
                         style={{
                             height: '100%',
@@ -46,15 +46,9 @@ export default function CompactHealthBar({ current, max, showLabel = true, anima
                                 inputRange: [0, 100],
                                 outputRange: ['0%', '100%'],
                             }),
+                            backgroundColor: getBarColor(),
                         }}
-                    >
-                        <LinearGradient
-                            colors={[getBarColor(), getBarColor()]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={{ flex: 1 }}
-                        />
-                    </Animated.View>
+                    />
                 </View>
             </View>
             {showLabel && (

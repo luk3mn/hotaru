@@ -18,9 +18,8 @@ export default function CardIcon({ name, size, flex, onPress }: CardIconProps) {
             style={{ flex: flex ?? 0 }} 
             name={name} 
             size={iconSize} 
-            color={schema.icon} 
+            color={schema.rosewater} 
             onPress={onPress}
-            // className='bg-dark-sherbet-fade p-2 rounded-full'
         />
     )
 }

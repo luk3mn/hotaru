@@ -86,10 +86,10 @@ export default function ChartDonut({ children, data, onPress, total, totalLegend
                             key={index}
                             style={[ { left: x-25, top: y-20 } ]}
                             className={`
-                                ${theme === 'dark' ? 'bg-light-bg/10' : 'bg-dark-bg/10'}
+                                ${theme === 'dark' ? 'bg-dark-overlay2/40' : 'bg-light-overlay2/40'}
                                 p-2 rounded-full
                                 absolute items-center justify-center
-                                w-1/4 h-1/1
+                                w-1/5 h-1/1
                             `}
                         >
                             <Text className={`

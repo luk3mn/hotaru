@@ -37,7 +37,7 @@ export default function CompactXPBar({
         <View className='mb-2'>
             <View className="flex-row items-center gap-2 px-4 py-1">
                 <FlaskConicalIcon color={'#8b5cf6'} size={getIconSize(0.65)} />
-                <View className={`flex-1 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-dark-surface-alt' : 'bg-light-surface-alt'}`}>
+                <View className={`flex-1 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'}`}>
                     <Animated.View
                         style={{
                             height: '100%',
@@ -45,15 +45,9 @@ export default function CompactXPBar({
                                 inputRange: [0, 100],
                                 outputRange: ['0%', '100%'],
                             }),
+                            backgroundColor: '#8b5cf6',
                         }}
-                    >
-                        <LinearGradient
-                            colors={['#8b5cf6', '#6366f1']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={{ flex: 1 }}
-                        />
-                    </Animated.View>
+                    />
                 </View>
             </View>
             {showLabel && (

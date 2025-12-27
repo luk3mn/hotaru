@@ -5,12 +5,10 @@ export default function ModalFooter({ children }: { children: React.ReactNode })
     const { theme } = useTheme();
 
     return (
-        <View
-            className={`
-        p-5 border-t
-        ${theme === 'dark' ? 'border-dark-icon' : 'border-light-icon'}
-      `}
-        >
+        <View className={`
+            p-5 border-t
+            ${theme === 'dark' ? 'border-dark-surface2' : 'border-light-surface2'}
+        `}>
             {children}
         </View>
     );

@@ -8,7 +8,7 @@ export default function HeaderBack() {
 
     return (
         <TouchableOpacity onPress={() => router.back()}>
-            <ChevronLeft size={40} color={schema.icon} />
+            <ChevronLeft size={40} color={schema.rosewater} />
         </TouchableOpacity>
     );
 }

@@ -18,14 +18,14 @@ export default function ModalHeader({ title }: ModalHeaderProps) {
         <View
             className={`
                 flex-row justify-between items-center p-5 border-b
-                ${theme === 'dark' ? 'border-dark-icon' : 'border-light-icon'}
+                ${theme === 'dark' ? 'border-dark-surface1' : 'border-light-surface1'}
             `}
         >
             <ThemedText className="text-xl font-bold">{title}</ThemedText>
             <TouchableOpacity
                 onPress={closeModal}
                 className={`
-                    ${theme === 'dark' ? 'bg-dark-icon/80' : 'bg-light-icon/40'}
+                    ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'}
                     w-8 h-8 rounded-full items-center justify-center
                 `}
                 activeOpacity={0.7}

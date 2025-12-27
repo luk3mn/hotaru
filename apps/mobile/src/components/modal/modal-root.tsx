@@ -148,7 +148,7 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
               elevation: 24,
             }}
             className={`
-              ${theme === 'dark' ? 'bg-dark-sherbet' : 'bg-light-sherbet'} 
+              ${theme === 'dark' ? 'bg-dark-surface0' : 'bg-light-surface0'} 
               rounded-t-[24px] max-h-[70%]
             `}
             pointerEvents={touchEnabled ? 'auto' : 'none'}

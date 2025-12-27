@@ -12,5 +12,5 @@ export default function SectionRedirect({ onPress, size, flex }: SectionRedirect
     const iconSize = getIconSize(size);
     const { schema } = getColorScheme();
 
-    return <MaterialCommunityIcons style={{ flex: flex ?? 0 }} name={'chevron-right'} onPress={onPress} size={iconSize} color={schema.icon} />
+    return <MaterialCommunityIcons style={{ flex: flex ?? 0 }} name={'chevron-right'} onPress={onPress} size={iconSize} color={schema.pink} />
 }

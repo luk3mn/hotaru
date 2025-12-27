@@ -12,5 +12,5 @@ export default function SectionIcon({ name, size, flex }: SectionIconProps) {
     const iconSize = getIconSize(size);
     const { schema } = getColorScheme();
     
-    return <Ionicons style={{ flex: flex ?? 0 }} name={name} size={iconSize} color={schema.icon} />
+    return <Ionicons style={{ flex: flex ?? 0 }} name={name} size={iconSize} color={schema.pink} />
 }

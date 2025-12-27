@@ -10,7 +10,7 @@ export default function ButtonRounded({ children, onPress }: ButtonRoundedProps)
 
     return (
         <TouchableOpacity className={`
-            ${theme === 'dark' ? 'bg-dark-icon' : 'bg-light-icon'}
+            ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'}
             p-2 rounded-full
         `} onPress={onPress}>
             {children}

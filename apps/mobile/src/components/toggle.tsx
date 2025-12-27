@@ -62,7 +62,7 @@ export default function Toggle({ status, size, flex, onPress }: ToggleProps) {
         const backgroundColor = interpolateColor(
             progress.value,
             [0, 1],
-            ['hsl(0, 0%, 39%)', 'hsl(256, 40%, 76%)'] // gray-500 to green-500, adjust to your theme
+            [schema.surface2, schema.mauve] // gray-500 to green-500, adjust to your theme
         );
         
         return {

@@ -6,7 +6,7 @@ export default function ButtonBadge({ children }: { children?: React.ReactNode }
 
     return (
         <View className={`
-            ${theme === 'dark' ? 'bg-dark-warn' : 'bg-light-warn'}
+            ${theme === 'dark' ? 'bg-dark-red' : 'bg-light-red'}
             h-5 w-5 rounded-full absolute top-[-4] right-[-4]
             flex items-center justify-center
         `}>

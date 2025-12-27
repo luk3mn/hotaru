@@ -2,11 +2,11 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Chart } from "@/components/chart";
 import { Header } from "@/components/header";
-import { ThemedText, ThemedView } from "@/components/themed";
+import { ThemedView } from "@/components/themed";
 import { t } from "@/i18n/i18n";
 import { getColorScheme } from "@/lib/color-schema";
 import { router } from "expo-router";
-import { Bell, HandCoins, LucideCircleFadingPlus, ShoppingBagIcon, ShoppingCartIcon, UserCircleIcon } from "lucide-react-native";
+import { Bell, HandCoins, ShoppingBagIcon, UserCircleIcon } from "lucide-react-native";
 import { ScrollView, Text, View } from "react-native";
 
 export default function Finance() {
@@ -14,11 +14,11 @@ export default function Finance() {
 
 
     const data = [
-        { label: 'Gastos Essenciais', value: 447.84, percentage: 36, color: schema.chartOne },
-        { label: 'Payments', value: 248.8, percentage: 20, color: schema.chartTwo },
-        { label: 'Expenses', value: 149.28, percentage: 12, color: schema.chartThree },
-        { label: 'Subscriptions', value: 99.52, percentage: 8, color: schema.chartFour },
-        { label: 'Other', value: 299.21, percentage: 24, color: schema.chartFive },
+        { label: 'Gastos Essenciais', value: 447.84, percentage: 36, color: schema.blue },
+        { label: 'Payments', value: 248.8, percentage: 20, color: schema.flamingo },
+        { label: 'Expenses', value: 149.28, percentage: 12, color: schema.maroon },
+        { label: 'Subscriptions', value: 99.52, percentage: 8, color: schema.teal },
+        { label: 'Other', value: 299.21, percentage: 24, color: schema.pink },
     ];
 
     return (
@@ -57,22 +57,19 @@ export default function Finance() {
                     <LucideCircleFadingPlus size={25} color={schema.icon} />
                 </Card.Wrapper>
             </Card.Regular> */}
-                <ScrollView horizontal>
-                    <View className="items-center">
-                        <Button.Rounded>
-                            <HandCoins size={25} color={'#fff'} />
-                        </Button.Rounded>
-                        <Text className="font-ubuntu-semibold">Gastos</Text>
-                    </View>
-                    <View>
-                        <Button.Rounded onPress={() => router.push('/finance/shopping')}>
-                            <ShoppingBagIcon size={25} color={'#fff'} />
-                        </Button.Rounded>
-                    </View>
-            {/* <View className="flex-[1] justify-center items-center">
-
-            </View> */}
-                </ScrollView>
+            <ScrollView horizontal >
+                <View className="items-center">
+                    <Button.Rounded>
+                        <HandCoins size={25} color={'#fff'} />
+                    </Button.Rounded>
+                    <Text className="font-ubuntu-semibold">Gastos</Text>
+                </View>
+                <View>
+                    <Button.Rounded onPress={() => router.push('/finance/shopping')}>
+                        <ShoppingBagIcon size={25} color={'#fff'} />
+                    </Button.Rounded>
+                </View>
+            </ScrollView>
             <ScrollView horizontal className="flex-[1]" pagingEnabled>
                     <Card.Regular>
                         <Card.Icon name="cash-outline" flex={1} />
