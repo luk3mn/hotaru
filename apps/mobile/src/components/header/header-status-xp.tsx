@@ -1,10 +1,10 @@
 // components/StatusXP.tsx
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Animated, View, Text } from 'react-native';
 import { useTheme } from '@/contexts/ThemeContext';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Flashlight, FlaskConicalIcon, ZapIcon } from 'lucide-react-native';
+import { FlaskConicalIcon } from 'lucide-react-native';
 import { getIconSize } from '@/lib/dimensions';
+import { getColorScheme } from '@/lib/color-schema';
 
 interface StatusXPProps {
     currentXP: number;        // Current XP (e.g., 850)
@@ -24,6 +24,7 @@ export default function CompactXPBar({
     const widthAnim = useRef(new Animated.Value(0)).current;
     const percentage = (currentXP / xpToNextLevel) * 100;
     const { theme } = useTheme();
+    const { schema } = getColorScheme();
 
     useEffect(() => {
         Animated.spring(widthAnim, {
@@ -36,7 +37,7 @@ export default function CompactXPBar({
     return (
         <View className='mb-2'>
             <View className="flex-row items-center gap-2 px-4 py-1">
-                <FlaskConicalIcon color={'#8b5cf6'} size={getIconSize(0.65)} />
+                <FlaskConicalIcon color={schema.lavender} size={getIconSize(0.65)} />
                 <View className={`flex-1 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-dark-surface1' : 'bg-light-surface1'}`}>
                     <Animated.View
                         style={{
@@ -45,7 +46,7 @@ export default function CompactXPBar({
                                 inputRange: [0, 100],
                                 outputRange: ['0%', '100%'],
                             }),
-                            backgroundColor: '#8b5cf6',
+                            backgroundColor: schema.lavender,
                         }}
                     />
                 </View>

@@ -1,10 +1,10 @@
 // components/StatusHealth.tsx
 import { useEffect, useRef } from 'react';
-import { Animated, View, Text, Image } from 'react-native';
+import { Animated, View, Text } from 'react-native';
 import { getIconSize } from '@/lib/dimensions';
 import { useTheme } from '@/contexts/ThemeContext';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Heart } from 'lucide-react-native';
+import { getColorScheme } from '@/lib/color-schema';
 
 interface StatusHealthProps {
     current: number;      // Current health (e.g., 75)
@@ -18,6 +18,7 @@ export default function CompactHealthBar({ current, max, showLabel = true, anima
     const widthAnim = useRef(new Animated.Value(0)).current;
     const percentage = (current / max) * 100;
     const { theme } = useTheme();
+    const { schema } = getColorScheme();
 
     useEffect(() => {
         Animated.spring(widthAnim, {
@@ -28,10 +29,10 @@ export default function CompactHealthBar({ current, max, showLabel = true, anima
     }, [percentage]);
 
     const getBarColor = () => {
-        if (percentage >= 80) return '#4ade80';
-        if (percentage >= 50) return '#fbbf24';
-        if (percentage >= 25) return '#fb923c';
-        return '#ef4444';
+        if (percentage >= 80) return schema.green;
+        if (percentage >= 50) return schema.yellow;
+        if (percentage >= 25) return schema.peach;
+        return schema.red;
     };
 
     return (

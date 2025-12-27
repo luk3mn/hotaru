@@ -12,7 +12,7 @@ export const Header = {
     Status: {
         Root: HeaderStatus,
         XP: CompactXPBar,
-        HP: CompactHealthBar
+        HP: CompactHealthBar,
     },
     Back: HeaderBack,
     Title: HeaderTitle,

@@ -18,12 +18,12 @@ export default function TabLayout() {
             <Header.Profile />
             <Header.Wrapper flex={1} direction='column'>
                 <Header.Status.HP 
-                    current={87} 
+                    current={80} 
                     max={100}
                 />
                 <Header.Status.XP 
-                    currentXP={45} 
-                    xpToNextLevel={100} 
+                    currentXP={465} 
+                    xpToNextLevel={1000} 
                 />
             </Header.Wrapper>
         </Header.Status.Root>
