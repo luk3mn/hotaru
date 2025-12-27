@@ -31,6 +31,8 @@ module.exports = {
         // Dark theme colors
         dark: {
           bg: 'hsl(288, 6%, 16%)',
+          surface: 'hsl(290, 8%, 22%)',
+          'surface-alt': 'hsl(290, 8%, 26%)',
           mint: 'hsl(316, 30%, 36%)',
           lilac: 'hsl(263, 29%, 32%)',
           sherbet: 'hsl(257, 8%, 18%)',
@@ -43,6 +45,8 @@ module.exports = {
         // Light theme colors (inversions and adjustments)
         light: {
           bg: 'hsl(0, 0%, 98%)',
+          surface: 'hsl(0, 0%, 100%)',
+          'surface-alt': 'hsl(0, 0%, 95%)',
           mint: 'hsl(316, 35%, 85%)',
           lilac: 'hsl(263, 35%, 88%)',
           sherbet: 'hsl(257, 15%, 95%)',

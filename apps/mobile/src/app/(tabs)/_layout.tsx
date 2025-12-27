@@ -4,6 +4,7 @@ import { Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { colors } from '@/constants/colors';
+import { Header } from '@/components/header';
 
 export default function TabLayout() {
     const { height } = Dimensions.get('window');
@@ -16,7 +17,23 @@ export default function TabLayout() {
             <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
             <Tabs
                 screenOptions={{
-                    headerShown: false,
+                    headerShown: true,
+                    header: () => (
+                        <Header.Status.Root>
+                            <Header.Profile />
+                            <Header.Wrapper flex={1} direction='column'>
+                                <Header.Status.HP 
+                                    current={87} 
+                                    max={100}
+                                />
+                                <Header.Status.XP 
+                                    currentXP={650} 
+                                    xpToNextLevel={1000}
+                                />
+                            </Header.Wrapper>
+                        </Header.Status.Root>
+                    ),
+                    headerShadowVisible: false,
                     tabBarShowLabel: false,
                     tabBarStyle: {
                         backgroundColor: currentColors.card,

@@ -1,9 +1,9 @@
-import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HeaderRoot({ children }: { children: React.ReactNode }) {
     return (
-        <View className="flex-row items-center justify-between">
+        <SafeAreaView className="flex-row items-center justify-between">
             {children}
-        </View>
+        </SafeAreaView>
     );
 }
