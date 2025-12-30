@@ -1,3 +1,4 @@
+import { Header } from '@/components/header';
 import { Modal } from '@/components/modal';
 import { Section } from '@/components/section';
 import { ThemedText, ThemedView } from '@/components/themed';
@@ -25,10 +26,8 @@ export default function Settings() {
   };
 
   return (
-    <ThemedView className="flex-1 p-4">
-      <View className='items-center'>
-        <ThemedText className='text-2xl font-bold mb-4'>{t('settings.title')}</ThemedText>
-      </View>
+    <ThemedView className="flex-1 px-4 py-2">
+      <Header.Title align='center'>{t('settings.title')}</Header.Title>
 
       <View className='mt-4 mb-4'>
         <ThemedText className='text-xl font-bold ml-2'>{t('settings.general.title')}</ThemedText>

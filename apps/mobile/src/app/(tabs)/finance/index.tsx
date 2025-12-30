@@ -22,7 +22,7 @@ export default function Finance() {
     ];
 
     return (
-        <ThemedView className="flex-1 p-4">
+        <ThemedView className="flex-1 px-4 py-2">
             <Header.Root>
                 <Header.Title>{t('finance.title')}</Header.Title>
                 <Header.Wrapper>
