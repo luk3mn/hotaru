@@ -45,7 +45,7 @@ export default function TabLayout() {
                         height: height * 0.08,
                     },
                     tabBarActiveTintColor: currentColors.flamingo,
-                    tabBarInactiveTintColor: currentColors.surface0,
+                    tabBarInactiveTintColor: currentColors.surface2,
                 }}
             >
                 <Tabs.Screen
