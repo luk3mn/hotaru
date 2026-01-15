@@ -55,6 +55,7 @@ export default function TabLayout() {
                             <Ionicons name="book" size={size} color={color} />
                         ),
                         tabBarIconStyle: { marginTop: height * 0.015 },
+                        href: null, // DISABLE FOR NOW
                     }}
                 />
                 <Tabs.Screen
@@ -64,6 +65,7 @@ export default function TabLayout() {
                             <Ionicons name="heart" size={size} color={color} />
                         ),
                         tabBarIconStyle: { marginTop: height * 0.015 },
+                        href: null, // DISABLE FOR NOW
                     }}
                 />
                 <Tabs.Screen
