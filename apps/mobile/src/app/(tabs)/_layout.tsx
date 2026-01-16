@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Tabs, usePathname } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -29,12 +29,24 @@ export default function TabLayout() {
         </Header.Status.Root>
     ), []);
 
+    const pathname = usePathname();
+
+    const isSubRoute = useMemo(() => {
+        const mainRoutes = ['/home', '/finance', '/learning', '/health', '/settings'];
+        return !mainRoutes.includes(pathname);
+    }, [pathname]);
+
+    const isHomeRoute = useMemo(() => {
+        const homeRoute = '/home';
+        return homeRoute.includes(pathname);
+    }, [pathname]);
+
     return (
         <>
             <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
             <Tabs
                 screenOptions={{
-                    headerShown: true,
+                    headerShown: !isSubRoute && !isHomeRoute,
                     header: () => headerComponent,
                     headerShadowVisible: false,
                     tabBarShowLabel: false,
@@ -43,6 +55,7 @@ export default function TabLayout() {
                         borderTopColor: currentColors.crust,
                         borderTopWidth: 1,
                         height: height * 0.08,
+                        display: isSubRoute ? 'none' : 'flex',
                     },
                     tabBarActiveTintColor: currentColors.flamingo,
                     tabBarInactiveTintColor: currentColors.surface2,

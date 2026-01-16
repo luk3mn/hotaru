@@ -2,11 +2,18 @@ import { Text, ViewProps, TextProps, View } from 'react-native';
 import { useTheme } from '@/contexts/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export function ThemedView({ className = '', ...props }: ViewProps & { className?: string }) {
+interface ThemedViewProps extends ViewProps {
+  className?: string;
+  wrapper?: 'safe-area' | 'view';
+}
+
+export function ThemedView({ className = '', wrapper = 'view', ...props }: ThemedViewProps) {
   const { theme } = useTheme();
   const themeClasses = theme === 'dark' ? 'bg-dark-base' : 'bg-light-base';
+
+  const Wrapper = wrapper === 'view' ? View : SafeAreaView;
   
-  return <View className={`${themeClasses} ${className}`} {...props} />;
+  return <Wrapper className={`${themeClasses} ${className}`} {...props} />;
 }
 
 export function ThemedText({ className = '', ...props }: TextProps & { className?: string }) {

@@ -1,7 +1,7 @@
 import { View } from "react-native";
 
 interface HeaderWrapperProps {
-    children: React.ReactNode,
+    children?: React.ReactNode,
     flex?: number,
     gap?: 0 | 2 | 4 | 6,
     align?: "flex-start" | "flex-end" | "center"

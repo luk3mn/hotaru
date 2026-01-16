@@ -2,18 +2,18 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Chart } from "@/components/chart";
 import { Header } from "@/components/header";
-import { ThemedText, ThemedView } from "@/components/themed";
+import { ThemedView } from "@/components/themed";
 import { t } from "@/i18n/i18n";
 import { getColorScheme } from "@/lib/color-schema";
 import { router } from "expo-router";
-import { 
-    Bell, 
-    UserCircleIcon, 
-    TrendingDown, 
-    TrendingUp, 
-    PiggyBank, 
+import {
+    Bell,
+    UserCircleIcon,
+    TrendingDown,
+    TrendingUp,
+    PiggyBank,
     Calendar,
-    Target 
+    Target
 } from "lucide-react-native";
 import { ScrollView, Text, View } from "react-native";
 
