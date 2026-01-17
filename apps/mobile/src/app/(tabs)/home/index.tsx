@@ -1,6 +1,7 @@
 import { Button } from '@/components/button';
 import { Header } from '@/components/header';
 import { Modal } from '@/components/modal';
+import { Progress } from '@/components/progress';
 import { ThemedText, ThemedView } from '@/components/themed';
 import { useIconSize } from '@/hooks/use-dimensions';
 import { t } from '@/i18n/i18n';
@@ -36,6 +37,11 @@ export default function Home() {
           />
         </Header.Wrapper>
       </Header.Status.Root>
+
+      <Progress.Root>
+        <Progress.Bar current={35} toNextLevel={100} />
+        <Progress.Label current={35} toNextLevel={100} />
+      </Progress.Root>
 
       <Modal.Root visible={visibleProfile} onClose={() => setVisibleProfile(false)}>
         <Modal.Header title={t('settings.general.language')} />

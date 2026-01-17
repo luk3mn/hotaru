@@ -4,6 +4,7 @@ import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import "../../global.css";
 import { useLoadFonts } from '@/hooks/use-fonts';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function RootLayout() {
   const { loaded, error } = useLoadFonts();
@@ -13,12 +14,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-        </Stack>
-      </LanguageProvider>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+          </Stack>
+        </LanguageProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
