@@ -1,10 +1,43 @@
 {
     "common": {
         "save": "Save",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "level": "Level",
+        "profile": "Profile"
     },
     "home": {
-        "welcome": "Welcome back"
+        "welcome": "Welcome back",
+        "overview": "OVERVIEW",
+        "yourAttributes": "Your Attributes",
+        "developAllAreas": "Develop all areas of your life",
+        "overallProgress": "Overall Progress",
+        "averageOfAllAttributes": "Average of all attributes",
+        "attributes": {
+            "physical": {
+                "name": "Physical",
+                "description": "Health, exercise, nutrition, sleep"
+            },
+            "mental": {
+                "name": "Mental",
+                "description": "Learning, reading, creativity"
+            },
+            "social": {
+                "name": "Social",
+                "description": "Relationships, networking, communication"
+            },
+            "professional": {
+                "name": "Professional",
+                "description": "Career, technical skills"
+            },
+            "wellbeing": {
+                "name": "Well-being",
+                "description": "Meditation, hobbies, self-care"
+            },
+            "financial": {
+                "name": "Financial",
+                "description": "Economy, investments, financial education"
+            }
+        }
     },
     "settings": {
         "title": "Settings",
@@ -27,7 +60,7 @@
         "chart": {
             "title": "Saving",
             "period": {
-                "daily": "Dayly",
+                "daily": "Daily",
                 "weekly": "Weekly",
                 "monthly": "Monthly",
                 "yearly": "Yearly"
@@ -38,7 +71,6 @@
             "expenses": "Expenses",
             "investments": "Investments"
         }
-        
     },
     "shopping": {
         "title": "Shopping"

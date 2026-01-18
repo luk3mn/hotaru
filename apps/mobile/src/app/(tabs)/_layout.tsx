@@ -14,7 +14,7 @@ export default function TabLayout() {
     const currentColors = theme === 'dark' ? colors.dark : colors.light;
 
     const headerComponent = useMemo(() => (
-        <Header.Status.Root>
+        <Header.Status.Root wrapper='safe-area'>
             <Header.Profile />
             <Header.Wrapper flex={1} direction='column'>
                 <Header.Status.HP 

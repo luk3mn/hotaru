@@ -1,10 +1,43 @@
 {
     "common": {
         "save": "Salvar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "level": "Nível",
+        "profile": "Perfil"
     },
     "home": {
-        "welcome": "Bem-vindo"
+        "welcome": "Bem-vindo",
+        "overview": "VISÃO GERAL",
+        "yourAttributes": "Seus Atributos",
+        "developAllAreas": "Desenvolva todas as áreas da sua vida",
+        "overallProgress": "Progresso Geral",
+        "averageOfAllAttributes": "Média de todos os atributos",
+        "attributes": {
+            "physical": {
+                "name": "Físico",
+                "description": "Saúde, exercício, alimentação, sono"
+            },
+            "mental": {
+                "name": "Mental",
+                "description": "Aprendizado, leitura, criatividade"
+            },
+            "social": {
+                "name": "Social",
+                "description": "Relacionamentos, networking, comunicação"
+            },
+            "professional": {
+                "name": "Profissional",
+                "description": "Carreira, habilidades técnicas"
+            },
+            "wellbeing": {
+                "name": "Bem-estar",
+                "description": "Meditação, hobbies, autocuidado"
+            },
+            "financial": {
+                "name": "Financeiro",
+                "description": "Economia, investimentos, educação financeira"
+            }
+        }
     },
     "settings": {
         "title": "Configurações",
