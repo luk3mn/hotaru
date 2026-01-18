@@ -5,6 +5,7 @@ import { Progress } from '@/components/progress';
 import { ThemedText, ThemedView } from '@/components/themed';
 import { useIconSize } from '@/hooks/use-dimensions';
 import { t } from '@/i18n/i18n';
+import { getColorScheme } from '@/lib/color-schema';
 import { router } from 'expo-router';
 import { MapIcon, UserCircleIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -12,6 +13,7 @@ import { useState } from 'react';
 export default function Home() {
   const [visibleProfile, setVisibleProfile] = useState<boolean>(false);
   const { size } = useIconSize(1);
+  const { schema } = getColorScheme();
 
   return (
     <ThemedView wrapper='safe-area' className="flex-1 p-4">
@@ -32,15 +34,23 @@ export default function Home() {
             max={100}
           />
           <Header.Status.XP
-            currentXP={465}
+            currentXP={405}
             xpToNextLevel={1000}
           />
         </Header.Wrapper>
       </Header.Status.Root>
 
-      <Progress.Root>
-        <Progress.Bar current={35} toNextLevel={100} />
-        <Progress.Label current={35} toNextLevel={100} />
+      <Progress.Root 
+          color={{
+              high: schema.green,
+              medium: schema.yellow,
+              low: schema.peach,
+              critical: schema.red,
+          }}
+      >
+        <Progress.Icon name="brain" size={0.8} />
+        <Progress.Bar current={70} toNextLevel={100} />
+        <Progress.Label current={35} toNextLevel={100} position='absolute' />
       </Progress.Root>
 
       <Modal.Root visible={visibleProfile} onClose={() => setVisibleProfile(false)}>
