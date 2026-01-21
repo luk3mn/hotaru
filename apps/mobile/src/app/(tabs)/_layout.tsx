@@ -46,7 +46,8 @@ export default function TabLayout() {
             <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
             <Tabs
                 screenOptions={{
-                    headerShown: !isSubRoute && !isHomeRoute,
+                    // headerShown: !isSubRoute && !isHomeRoute,
+                    headerShown: false,
                     header: () => headerComponent,
                     headerShadowVisible: false,
                     tabBarShowLabel: false,

@@ -26,7 +26,7 @@ export default function Settings() {
   };
 
   return (
-    <ThemedView className="flex-1 px-4 py-2">
+    <ThemedView wrapper='safe-area' className="flex-1 px-4 py-2">
       <Header.Title align='center'>{t('settings.title')}</Header.Title>
 
       <View className='mt-4 mb-4'>

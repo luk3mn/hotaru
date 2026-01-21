@@ -9,7 +9,7 @@ import { useTranslation } from '@/contexts/LanguageContext';
 import { getColorScheme } from '@/lib/color-schema';
 import { router } from 'expo-router';
 import { MapIcon, UserCircleIcon } from 'lucide-react-native';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { ScrollView, StatusBar, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -21,10 +21,9 @@ export default function Home() {
   const { size } = useIconSize(1);
   const { schema } = getColorScheme();
   const { theme } = useTheme();
-  const { t } = useTranslation(); // ← Hook para reagir a mudanças de idioma
+  const { t } = useTranslation();
 
-  // Atributos do usuário com i18n - usa useMemo para recalcular quando idioma mudar
-  const attributes = useMemo(() => [
+  const attributes = [
     {
       id: 'physical',
       name: t('home.attributes.physical.name'),
@@ -115,11 +114,10 @@ export default function Home() {
       },
       gradient: [schema.green, schema.yellow] as [string, string],
     },
-  ], [t, schema]); // ← Dependências: recalcula quando t ou schema mudar
+  ];
 
   return (
     <ThemedView wrapper='view' className="flex-1">
-      {/* Header com Gradiente */}
       <LinearGradient
         colors={[schema.surface2, schema.surface1]}
         start={{ x: 0, y: 0 }}

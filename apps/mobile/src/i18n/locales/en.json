@@ -59,6 +59,7 @@
         "title": "Finance",
         "chart": {
             "title": "Saving",
+            "totalLegend": "Movement",
             "period": {
                 "daily": "Daily",
                 "weekly": "Weekly",
@@ -66,10 +67,47 @@
                 "yearly": "Yearly"
             }
         },
-        "category": {
-            "incomes": "Incomes",
-            "expenses": "Expenses",
-            "investments": "Investments"
+        "chartData": {
+            "essentialExpenses": "Essential Expenses",
+            "variableExpenses": "Variable Expenses",
+            "investments": "Investments",
+            "fixedPayments": "Fixed Payments",
+            "reserveGoals": "Reserve/Goals"
+        },
+        "categories": {
+            "title": "Categories",
+            "tapForDetails": "Tap for details",
+            "expenses": {
+                "title": "Expenses",
+                "subtitle": "Daily spending",
+                "description": "Control your spending"
+            },
+            "income": {
+                "title": "Income",
+                "subtitle": "Your earnings",
+                "description": "Track your income"
+            },
+            "investments": {
+                "title": "Investments",
+                "subtitle": "Portfolio",
+                "description": "Grow your money"
+            },
+            "payments": {
+                "title": "Payments",
+                "subtitle": "Fixed bills",
+                "description": "Never miss a due date"
+            },
+            "goals": {
+                "title": "Goals",
+                "subtitle": "Objectives",
+                "description": "Achieve your dreams"
+            }
+        },
+        "summary": {
+            "title": "Monthly Summary",
+            "totalIncome": "Total Income",
+            "totalExpenses": "Total Expenses",
+            "monthBalance": "Month Balance"
         }
     },
     "shopping": {

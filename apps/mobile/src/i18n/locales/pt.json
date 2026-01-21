@@ -59,6 +59,7 @@
         "title": "Finanças",
         "chart": {
             "title": "Economias",
+            "totalLegend": "Movimentação",
             "period": {
                 "daily": "Diário",
                 "weekly": "Semanal",
@@ -66,10 +67,47 @@
                 "yearly": "Anual"
             }
         },
-        "category": {
-            "incomes": "Receitas",
-            "expenses": "Despesas",
-            "investments": "Investimentos"
+        "chartData": {
+            "essentialExpenses": "Despesas Essenciais",
+            "variableExpenses": "Despesas Variáveis",
+            "investments": "Investimentos",
+            "fixedPayments": "Pagamentos Fixos",
+            "reserveGoals": "Reserva/Metas"
+        },
+        "categories": {
+            "title": "Categorias",
+            "tapForDetails": "Toque para detalhes",
+            "expenses": {
+                "title": "Despesas",
+                "subtitle": "Gastos do dia a dia",
+                "description": "Controle seus gastos"
+            },
+            "income": {
+                "title": "Receitas",
+                "subtitle": "Suas entradas",
+                "description": "Acompanhe sua renda"
+            },
+            "investments": {
+                "title": "Investimentos",
+                "subtitle": "Patrimônio",
+                "description": "Faça seu dinheiro crescer"
+            },
+            "payments": {
+                "title": "Pagamentos",
+                "subtitle": "Contas fixas",
+                "description": "Nunca perca um vencimento"
+            },
+            "goals": {
+                "title": "Metas",
+                "subtitle": "Objetivos",
+                "description": "Realize seus sonhos"
+            }
+        },
+        "summary": {
+            "title": "Resumo do Mês",
+            "totalIncome": "Total de Receitas",
+            "totalExpenses": "Total de Despesas",
+            "monthBalance": "Saldo do Mês"
         }
     },
     "shopping": {

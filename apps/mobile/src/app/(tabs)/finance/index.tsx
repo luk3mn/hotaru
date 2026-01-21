@@ -3,7 +3,7 @@ import { Card } from "@/components/card";
 import { Chart } from "@/components/chart";
 import { Header } from "@/components/header";
 import { ThemedView } from "@/components/themed";
-import { t } from "@/i18n/i18n";
+import { useTranslation } from "@/contexts/LanguageContext";
 import { getColorScheme } from "@/lib/color-schema";
 import { router } from "expo-router";
 import {
@@ -19,74 +19,99 @@ import { ScrollView, Text, View } from "react-native";
 
 export default function Finance() {
     const { schema } = getColorScheme();
+    const { t } = useTranslation();
 
     // Dados do gráfico donut - Visão macro das finanças
     const chartData = [
-        { label: 'Despesas Essenciais', value: 2500, percentage: 50, color: schema.red },
-        { label: 'Despesas Variáveis', value: 800, percentage: 16, color: schema.maroon },
-        { label: 'Investimentos', value: 1000, percentage: 20, color: schema.blue },
-        { label: 'Pagamentos Fixos', value: 500, percentage: 10, color: schema.peach },
-        { label: 'Reserva/Metas', value: 200, percentage: 4, color: schema.mauve },
+        { 
+            label: t('finance.chartData.essentialExpenses'), 
+            value: 2500, 
+            percentage: 50, 
+            color: schema.red 
+        },
+        { 
+            label: t('finance.chartData.variableExpenses'), 
+            value: 800, 
+            percentage: 16, 
+            color: schema.maroon 
+        },
+        { 
+            label: t('finance.chartData.investments'), 
+            value: 1000, 
+            percentage: 20, 
+            color: schema.blue 
+        },
+        { 
+            label: t('finance.chartData.fixedPayments'), 
+            value: 500, 
+            percentage: 10, 
+            color: schema.peach 
+        },
+        { 
+            label: t('finance.chartData.reserveGoals'), 
+            value: 200, 
+            percentage: 4, 
+            color: schema.mauve 
+        },
     ];
 
     const totalGastos = chartData.reduce((acc, item) => acc + item.value, 0);
 
     const mainCategories = [
         { 
-            title: "Despesas",
-            subtitle: "Gastos do dia a dia",
+            title: t('finance.categories.expenses.title'),
+            subtitle: t('finance.categories.expenses.subtitle'),
             amount: 3300, // Essenciais + Variáveis
             color: schema.red,
             icon: TrendingDown,
             route: "/finance/expenses" as const,
-            description: "Controle seus gastos"
+            description: t('finance.categories.expenses.description')
         },
         { 
-            title: "Receitas",
-            subtitle: "Suas entradas",
+            title: t('finance.categories.income.title'),
+            subtitle: t('finance.categories.income.subtitle'),
             amount: 5000,
             color: schema.green,
             icon: TrendingUp,
             route: "/finance/income" as const,
-            description: "Acompanhe sua renda"
+            description: t('finance.categories.income.description')
         },
         { 
-            title: "Investimentos",
-            subtitle: "Patrimônio",
+            title: t('finance.categories.investments.title'),
+            subtitle: t('finance.categories.investments.subtitle'),
             amount: 1000,
             color: schema.blue,
             icon: PiggyBank,
             route: "/finance/investments" as const,
-            description: "Faça seu dinheiro crescer"
+            description: t('finance.categories.investments.description')
         },
         { 
-            title: "Pagamentos",
-            subtitle: "Contas fixas",
+            title: t('finance.categories.payments.title'),
+            subtitle: t('finance.categories.payments.subtitle'),
             amount: 500,
             color: schema.peach,
             icon: Calendar,
             route: "/finance/payments" as const,
-            description: "Nunca perca um vencimento"
+            description: t('finance.categories.payments.description')
         },
         { 
-            title: "Metas",
-            subtitle: "Objetivos",
+            title: t('finance.categories.goals.title'),
+            subtitle: t('finance.categories.goals.subtitle'),
             amount: 200,
             color: schema.mauve,
             icon: Target,
             route: "/finance/goals" as const,
-            description: "Realize seus sonhos"
+            description: t('finance.categories.goals.description')
         },
     ];
 
     const handleCategoryPress = (route: string, title: string) => {
         console.log(`Navegar para: ${route} - ${title}`);
-        // Type assertion para contornar a validação estrita do Expo Router
         router.push(route as any);
     };
 
     return (
-        <ThemedView className="flex-1">
+        <ThemedView wrapper="safe-area" className="flex-1">
             <ScrollView 
                 className="flex-1"
                 contentContainerClassName="pb-6"
@@ -111,21 +136,21 @@ export default function Finance() {
                     <Chart.Donut 
                         data={chartData} 
                         total={totalGastos} 
-                        totalLegend="Movimentação"
+                        totalLegend={t('finance.chart.totalLegend')}
                     >
-                        <Chart.Period selected>Semanal</Chart.Period>
-                        <Chart.Period>Mensal</Chart.Period>
-                        <Chart.Period>Anual</Chart.Period>
+                        <Chart.Period selected>{t('finance.chart.period.weekly')}</Chart.Period>
+                        <Chart.Period>{t('finance.chart.period.monthly')}</Chart.Period>
+                        <Chart.Period>{t('finance.chart.period.yearly')}</Chart.Period>
                     </Chart.Donut>
                 </View>
 
                 <View className="px-4 mt-4">
                     <View className="flex-row justify-between items-center mb-4">
                         <Text className="text-lg font-bold dark:text-dark-text text-light-text">
-                            Categorias
+                            {t('finance.categories.title')}
                         </Text>
                         <Text className="text-sm dark:text-dark-text/60 text-light-text/60">
-                            Toque para detalhes
+                            {t('finance.categories.tapForDetails')}
                         </Text>
                     </View>
                     
@@ -145,13 +170,13 @@ export default function Finance() {
                 <View className="px-4 mt-6">
                     <View className="dark:bg-dark-surface0 bg-light-surface0 rounded-2xl p-4">
                         <Text className="text-base font-semibold dark:text-dark-text text-light-text mb-3">
-                            Resumo do Mês
+                            {t('finance.summary.title')}
                         </Text>
                         
                         <View className="space-y-2">
                             <View className="flex-row justify-between items-center">
                                 <Text className="text-sm dark:text-dark-text/70 text-light-text/70">
-                                    💰 Total de Receitas
+                                    💰 {t('finance.summary.totalIncome')}
                                 </Text>
                                 <Text className="text-sm font-semibold dark:text-dark-green text-light-green">
                                     R$ 5.000,00
@@ -160,7 +185,7 @@ export default function Finance() {
                             
                             <View className="flex-row justify-between items-center">
                                 <Text className="text-sm dark:text-dark-text/70 text-light-text/70">
-                                    💸 Total de Despesas
+                                    💸 {t('finance.summary.totalExpenses')}
                                 </Text>
                                 <Text className="text-sm font-semibold dark:text-dark-red text-light-red">
                                     R$ 3.300,00
@@ -171,7 +196,7 @@ export default function Finance() {
                             
                             <View className="flex-row justify-between items-center">
                                 <Text className="text-sm font-semibold dark:text-dark-text text-light-text">
-                                    💵 Saldo do Mês
+                                    💵 {t('finance.summary.monthBalance')}
                                 </Text>
                                 <Text className="text-base font-bold dark:text-dark-blue text-light-blue">
                                     R$ 1.700,00
