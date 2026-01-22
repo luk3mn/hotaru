@@ -1,3 +1,4 @@
+import HeaderAction from "./header-action";
 import HeaderBack from "./header-back";
 import HeaderProfile from "./header-profile";
 import HeaderRoot from "./header-root";
@@ -18,4 +19,5 @@ export const Header = {
     Title: HeaderTitle,
     Wrapper: HeaderWrapper,
     Profile: HeaderProfile,
+    Action: HeaderAction
 }
