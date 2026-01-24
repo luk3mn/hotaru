@@ -21,8 +21,6 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
   const slideAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const [isRendered, setIsRendered] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [touchEnabled, setTouchEnabled] = useState(false);
   const { height } = Dimensions.get('window');
   const { theme } = useTheme();
 
@@ -31,46 +29,34 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
     if (!visible) return;
 
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-      handleClose();
+      onClose();
       return true;
     });
 
     return () => backHandler.remove();
-  }, [visible]);
+  }, [visible, onClose]);
 
   useEffect(() => {
     if (visible) {
-      // Show modal immediately
+      // Show modal
       setIsRendered(true);
-      setIsAnimating(true);
-      setTouchEnabled(false);
-
-      // Small delay to ensure modal is rendered before animating
-      requestAnimationFrame(() => {
-        // Animate in
-        Animated.parallel([
-          Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 200,
-            useNativeDriver: true,
-          }),
-          Animated.spring(slideAnim, {
-            toValue: 1,
-            damping: 25,
-            stiffness: 200,
-            mass: 0.8,
-            useNativeDriver: true,
-          }),
-        ]).start(() => {
-          setIsAnimating(false);
-          // Enable touches after animation completes
-          setTouchEnabled(true);
-        });
-      });
+      
+      // Animate in
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 250,
+          useNativeDriver: true,
+        }),
+        Animated.spring(slideAnim, {
+          toValue: 1,
+          damping: 20,
+          stiffness: 200,
+          useNativeDriver: true,
+        }),
+      ]).start();
     } else if (isRendered) {
       // Animate out
-      setIsAnimating(true);
-      setTouchEnabled(false);
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 0,
@@ -79,34 +65,25 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
         }),
         Animated.timing(slideAnim, {
           toValue: 0,
-          duration: 250,
+          duration: 200,
           useNativeDriver: true,
         }),
       ]).start(() => {
         setIsRendered(false);
-        setIsAnimating(false);
       });
     }
-  }, [visible]);
-
-  const handleClose = () => {
-    if (isAnimating) return; // Prevent multiple close triggers
-    onClose();
-  };
+  }, [visible, isRendered]);
 
   const translateY = slideAnim.interpolate({
     inputRange: [0, 1],
     outputRange: [height, 0],
-    extrapolate: 'clamp',
   });
 
   const overlayOpacity = fadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 0.7],
-    extrapolate: 'clamp',
+    outputRange: [0, 0.5],
   });
 
-  // Don't render anything if modal shouldn't be visible
   if (!isRendered && !visible) return null;
 
   return (
@@ -115,15 +92,15 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
         visible={isRendered}
         transparent={true}
         animationType="none"
-        onRequestClose={handleClose}
+        onRequestClose={onClose}
         statusBarTranslucent
-        hardwareAccelerated
       >
-        <StatusBar style="light" backgroundColor="transparent" />
+        <StatusBar style="light" />
         
+        {/* Container Principal */}
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          {/* Animated Overlay */}
-          <TouchableWithoutFeedback onPress={handleClose}>
+          {/* Overlay com Fade */}
+          <TouchableWithoutFeedback onPress={onClose}>
             <Animated.View
               style={{
                 position: 'absolute',
@@ -137,23 +114,19 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
             />
           </TouchableWithoutFeedback>
 
-          {/* Modal Content Panel */}
+          {/* Panel do Modal - SEM pointerEvents restritivos */}
           <Animated.View
             style={{
               transform: [{ translateY }],
-              shadowColor: '#000',
-              shadowOffset: { width: 0, height: -4 },
-              shadowOpacity: 0.3,
-              shadowRadius: 8,
-              elevation: 24,
+              maxHeight: '80%',
             }}
             className={`
               ${theme === 'dark' ? 'bg-dark-surface0' : 'bg-light-surface0'} 
-              rounded-t-[24px] max-h-[70%]
+              rounded-t-3xl
+              shadow-2xl
             `}
-            pointerEvents={touchEnabled ? 'auto' : 'none'}
           >
-            <ModalCloseProvider onClose={handleClose}>
+            <ModalCloseProvider onClose={onClose}>
               {children}
             </ModalCloseProvider>
           </Animated.View>
@@ -163,7 +136,7 @@ export default function ModalRoot({ children, visible, onClose }: ModalRootProps
   );
 }
 
-// Context for close function
+// Context para função de fechar
 const ModalCloseContext = React.createContext<(() => void) | undefined>(undefined);
 
 export const useModalClose = () => {

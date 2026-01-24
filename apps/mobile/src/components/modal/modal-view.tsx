@@ -1,0 +1,18 @@
+import { useWindowDimensions, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+interface ModalViewProps {
+    children: React.ReactNode
+    className?: string,
+    height?: number
+}
+
+export default function ModalView({ children, className, height }: ModalViewProps) {
+    const { height: screenHeight } = useWindowDimensions();
+    
+    return (
+        <GestureHandlerRootView className={className} style={{ height: height ?? screenHeight*0.5 }}>
+            {children}
+        </GestureHandlerRootView>
+    );
+}
