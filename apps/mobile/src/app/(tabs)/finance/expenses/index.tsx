@@ -1,20 +1,21 @@
-import { CardCarousel } from "@/components/card-carousel";
 import { Header } from "@/components/header";
 import { Modal } from "@/components/modal";
+import SwipeableList from "@/components/swipeable-list";
 import { ThemedText, ThemedView } from "@/components/themed";
 import { useTheme } from "@/contexts/ThemeContext";
 import { getIconSize } from "@/lib/dimensions";
-import { useMemo, useState } from "react";
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import { useState } from "react";
+import { View, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Button } from "@/components/button";
+import { Bell } from "lucide-react-native";
 
-interface Song {
+interface ExpensesProps {
     id: string;
     title: string;
-    artist: string;
-    cover: string;
-    duration: string;
+    dueDate: string;
+    price?: number;
+    icon: keyof typeof MaterialCommunityIcons.glyphMap;
 }
 
 export default function Expenses() {
@@ -22,174 +23,43 @@ export default function Expenses() {
     const size = getIconSize(1.4);
     const { theme } = useTheme();
 
-    const renderItem = useMemo(() => {
-        return (item: any) => (
-            <View className={`
-                ${theme === 'dark' ? 'bg-dark-surface2' : 'bg-light-surface2'}
-                p-4 mx-2 rounded-lg
-            `}>
-                <Text>{item.title}</Text>
-            </View>
-        );
-    }, []);
-
-    const ListItem = ({ item }) => {
-        const renderRightActions = () => (
-            <View style={styles.actionsContainer}>
-                <TouchableOpacity style={[styles.button, styles.edit]}>
-                    <Text style={styles.actionText}>Edit</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, styles.delete]}>
-                    <Text style={styles.actionText}>Delete</Text>
-                </TouchableOpacity>
-            </View>
-        );
-
-        return (
-            <Swipeable renderRightActions={renderRightActions}>
-                <View
-                    className={`
-                                        flex-row items-center p-4 
-                                        ${theme === 'dark' ? 'bg-dark-surface2' : 'bg-light-surface2'}
-                                    `}
-                >
-                    <Image
-                        source={{ uri: item.cover }}
-                        className="w-14 h-14 rounded"
-                    />
-
-                    <View className="flex-1 ml-3">
-                        <Text
-                            className={`
-                                                text-base font-semibold
-                                                ${theme === 'dark' ? 'text-dark-text' : 'text-light-text'}
-                                            `}
-                        >
-                            {item.title}
-                        </Text>
-                        <Text
-                            className={`
-                                                text-sm
-                                                ${theme === 'dark' ? 'text-dark-text/60' : 'text-light-text/60'}
-                                            `}
-                        >
-                            {item.artist}
-                        </Text>
-                    </View>
-
-                    <Text
-                        className={`
-                                        text-sm
-                                        ${theme === 'dark' ? 'text-dark-text/60' : 'text-light-text/60'}
-                                        `}
-                    >
-                        {item.duration}
-                    </Text>
-                </View>
-            </Swipeable>
-        );
-    };
-
-
-    const songs: Song[] = [
+    const incomingBills: ExpensesProps[] = [
         {
             id: '1',
-            title: '505',
-            artist: 'Arctic Monkeys',
-            cover: 'https://picsum.photos/60/60?random=1',
-            duration: '4:13',
+            title: 'Spotify',
+            icon: 'spotify',
+            price: 6.89,
+            dueDate: '2023-01-01',
         },
         {
             id: '2',
-            title: 'When Our Time is Over',
-            artist: 'The Reality of Yourself',
-            cover: 'https://picsum.photos/60/60?random=2',
-            duration: '3:45',
+            title: 'Crunchyroll',
+            icon: 'animation-outline',
+            price: 5,
+            dueDate: '2023-01-05',
         },
         {
             id: '3',
-            title: 'Back Home',
-            artist: 'Blacktop Mojo',
-            cover: 'https://picsum.photos/60/60?random=3',
-            duration: '5:20',
+            title: 'Rental',
+            icon: 'home',
+            price: 200,
+            dueDate: '2023-01-10',
         },
         {
             id: '4',
-            title: 'Stop Crying Your Heart Out',
-            artist: 'Oasis',
-            cover: 'https://picsum.photos/60/60?random=4',
-            duration: '5:03',
+            title: 'Credit Card',
+            icon: 'credit-card',
+            price: 120,
+            dueDate: '2023-01-15',
         },
         {
             id: '5',
-            title: 'Snuff',
-            artist: 'Slipknot',
-            cover: 'https://picsum.photos/60/60?random=5',
-            duration: '4:36',
+            title: 'Electricity Bill',
+            icon: 'lightning-bolt',
+            price: 100,
+            dueDate: '2023-01-20',
         },
-        {
-            id: '6',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=6',
-            duration: '6:22',
-        },
-        {
-            id: '7',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=7',
-            duration: '6:22',
-        },
-        {
-            id: '8',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=8',
-            duration: '6:22',
-        },
-        {
-            id: '9',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=9',
-            duration: '6:22',
-        },
-        {
-            id: '10',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=10',
-            duration: '6:22',
-        },
-        {
-            id: '11',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=11',
-            duration: '6:22',
-        },
-        {
-            id: '12',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=12',
-            duration: '6:22',
-        },
-        {
-            id: '13',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=13',
-            duration: '6:22',
-        },
-        {
-            id: '14',
-            title: 'The Man Who Sold The World',
-            artist: 'Deep Purple',
-            cover: 'https://picsum.photos/60/60?random=14',
-            duration: '6:22',
-        },
+       
     ];
 
     return (
@@ -198,55 +68,52 @@ export default function Expenses() {
                 <Header.Back />
                 <Header.Title>Expenses</Header.Title>
                 <Header.Wrapper>
-                    <Header.Action name="dots-horizontal" size={size} onPress={() => setModalVisible(true)} />
+                    <Button.Rounded onPress={() => setModalVisible(true)}>
+                        <Button.Badge>1</Button.Badge>
+                        <Bell size={25} color={'#fff'} />
+                    </Button.Rounded>
                 </Header.Wrapper>
             </Header.Root>
 
             <Modal.Root visible={modalVisible} onClose={() => setModalVisible(false)}>
-                <Modal.Header title="Modal Title" />
+                <Modal.Header title="Incoming Bills" />
                 <Modal.View>
-                    <FlatList
-                        data={songs}
-                        keyExtractor={item => item.id}
-                        renderItem={({ item }) => <ListItem item={item} />}
+                    <SwipeableList
+                        data={incomingBills}
+                        renderRightActions={() => (
+                            <View className="flex-row items-center p-4 m-1 rounded-lg">
+                                <TouchableOpacity className={`${theme === 'dark' ? 'bg-dark-rosewater' : 'bg-light-rosewater'} p-3 rounded-lg mr-2`}>
+                                    <MaterialCommunityIcons name="pencil" size={24} color="#fff" />
+                                </TouchableOpacity>
+                                <TouchableOpacity className={`${theme === 'dark' ? 'bg-dark-green' : 'bg-light-green'} p-3 rounded-lg`}>
+                                    <MaterialCommunityIcons name="check-all" size={24} color="#fff" />
+                                </TouchableOpacity>
+                            </View>
+                        )}
+                        swipeableItem={(item: ExpensesProps) => (
+                            <View
+                                className={`
+                                    flex-row items-center p-4 m-4 rounded-lg 
+                                    ${theme === 'dark' ? 'bg-dark-surface2' : 'bg-light-surface2'}
+                                `}
+                            >
+                                <MaterialCommunityIcons
+                                    name={item.icon}
+                                    size={size}
+                                    color={theme === 'dark' ? '#fff' : '#000'}
+                                />
+
+                                <View className="flex-1 ml-3">
+                                    <ThemedText className="text-base font-medium">{item.title}</ThemedText>
+                                    <ThemedText className="text-sm">{new Date(item.dueDate).toLocaleDateString()}</ThemedText>
+                                </View>
+
+                                <ThemedText className="text-base font-semibold">{Intl.NumberFormat('en-US', { style: 'currency', currency: 'BRL' }).format(item.price || 0)}</ThemedText>
+                            </View>
+                        )}
                     />
                 </Modal.View>
             </Modal.Root>
         </ThemedView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    item: {
-        padding: 20,
-        marginBottom: 2,
-        backgroundColor: '#555555',
-    },
-    itemText: {
-        fontSize: 15,
-        fontWeight: '600',
-    },
-    actionsContainer: {
-        flexDirection: 'row',
-        marginBottom: 2,
-    },
-    button: {
-        width: 80,
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    edit: {
-        backgroundColor: '#ffab00',
-    },
-    delete: {
-        backgroundColor: '#ff1744',
-    },
-    actionText: {
-        color: '#fff',
-        fontWeight: 'bold',
-    },
-});
