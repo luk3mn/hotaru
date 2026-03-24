@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { useColorScheme as useSystemColorScheme } from 'react-native';
+import { useColorScheme as useNativeWindColorScheme } from 'nativewind';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Theme = 'light' | 'dark' | 'system';
@@ -16,7 +17,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const THEME_STORAGE_KEY = '@hotaru:theme';
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const systemColorScheme = useColorScheme();
+  const systemColorScheme = useSystemColorScheme();
+  const { setColorScheme } = useNativeWindColorScheme();
   const [themePreference, setThemePreference] = useState<Theme>('system');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,6 +31,11 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const theme = themePreference === 'system' 
     ? (systemColorScheme || 'light') 
     : themePreference;
+
+  // Keep NativeWind's `dark:` variants in sync with app theme preference.
+  useEffect(() => {
+    setColorScheme(themePreference);
+  }, [themePreference, setColorScheme]);
 
   // Carregar tema do AsyncStorage
   const loadTheme = async () => {

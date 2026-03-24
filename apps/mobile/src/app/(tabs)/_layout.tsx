@@ -29,18 +29,6 @@ export default function TabLayout() {
         </Header.Status.Root>
     ), []);
 
-    const pathname = usePathname();
-
-    const isSubRoute = useMemo(() => {
-        const mainRoutes = ['/home', '/finance', '/learning', '/health', '/settings'];
-        return !mainRoutes.includes(pathname);
-    }, [pathname]);
-
-    const isHomeRoute = useMemo(() => {
-        const homeRoute = '/home';
-        return homeRoute.includes(pathname);
-    }, [pathname]);
-
     return (
         <>
             <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
@@ -56,7 +44,6 @@ export default function TabLayout() {
                         borderTopColor: currentColors.crust,
                         borderTopWidth: 1,
                         height: height * 0.08,
-                        display: isSubRoute ? 'none' : 'flex',
                     },
                     tabBarActiveTintColor: currentColors.flamingo,
                     tabBarInactiveTintColor: currentColors.surface2,

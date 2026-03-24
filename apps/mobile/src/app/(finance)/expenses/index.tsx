@@ -9,6 +9,7 @@ import { View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "@/components/button";
 import { Bell } from "lucide-react-native";
+import FloatButton from "@/components/float-button";
 
 interface ExpensesProps {
     id: string;
@@ -75,8 +76,12 @@ export default function Expenses() {
                 </Header.Wrapper>
             </Header.Root>
 
+            {/* <View c>
+            </View> */}
+                <FloatButton />
+
             <Modal.Root visible={modalVisible} onClose={() => setModalVisible(false)}>
-                <Modal.Header title="Incoming Bills" />
+                <Modal.Header title="Upcoming Bills" />
                 <Modal.View>
                     <SwipeableList
                         data={incomingBills}

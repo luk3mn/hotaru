@@ -64,7 +64,7 @@ export default function Finance() {
             amount: 3300, // Essenciais + Variáveis
             color: schema.red,
             icon: TrendingDown,
-            route: "/finance/expenses" as const,
+            route: "/(finance)/expenses" as const,
             description: t('finance.categories.expenses.description')
         },
         { 
@@ -73,7 +73,7 @@ export default function Finance() {
             amount: 5000,
             color: schema.green,
             icon: TrendingUp,
-            route: "/finance/income" as const,
+            route: "/(finance)/income" as const,
             description: t('finance.categories.income.description')
         },
         { 
@@ -82,7 +82,7 @@ export default function Finance() {
             amount: 1000,
             color: schema.blue,
             icon: PiggyBank,
-            route: "/finance/investments" as const,
+            route: "/(finance)/investments" as const,
             description: t('finance.categories.investments.description')
         },
         { 
@@ -91,7 +91,7 @@ export default function Finance() {
             amount: 500,
             color: schema.peach,
             icon: Calendar,
-            route: "/finance/payments" as const,
+            route: "/(finance)/payments" as const,
             description: t('finance.categories.payments.description')
         },
         { 
@@ -100,7 +100,7 @@ export default function Finance() {
             amount: 200,
             color: schema.mauve,
             icon: Target,
-            route: "/finance/goals" as const,
+            route: "/(finance)/goals" as const,
             description: t('finance.categories.goals.description')
         },
     ];
