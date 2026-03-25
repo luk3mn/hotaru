@@ -1,5 +1,5 @@
 import { PlusIcon } from "lucide-react-native";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 export default function FloatButton({ onPress }: { onPress?: () => void }) {
     return (
