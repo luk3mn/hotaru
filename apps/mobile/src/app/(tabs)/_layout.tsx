@@ -77,6 +77,7 @@ export default function TabLayout() {
                             <Ionicons name="home" size={size} color={color} />
                         ),
                         tabBarIconStyle: { marginTop: height * 0.015 },
+                        href: null, // DISABLE FOR NOW
                     }}
                 />
                 <Tabs.Screen
