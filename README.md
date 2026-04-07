@@ -1,56 +1,69 @@
 # Hotaru
 
-> Brief tagline or description of what your project does
+> A gamified personal finance and life-tracking mobile app built with Expo.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](package.json)
+[![React Native](https://img.shields.io/badge/React%20Native-0.81-61DAFB.svg?logo=react)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-54-000020.svg?logo=expo)](https://expo.dev/)
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
 - [Architecture](#architecture)
-- [API Documentation](#api-documentation)
+- [Tech Stack](#tech-stack)
 - [Development](#development)
-- [Testing](#testing)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
 - [License](#license)
 - [Contact](#contact)
 
-## 🎯 Overview
+## Overview
 
-Mobile app build in react-native to help me control my finances, manage track my learning, and keep working on my health
+Hotaru is a cross-platform mobile application designed to help you take control of your finances, track personal growth, and monitor progress across key life attributes. The app combines personal finance management with gamified life-tracking, using RPG-inspired mechanics like HP, XP, and attribute levels to make self-improvement engaging.
 
-<!-- ### Key Highlights
+## Features
 
-- First major highlight
-- Second major highlight
-- Third major highlight -->
+### Finance
 
-## ✨ Features
+- **Budget Dashboard** — Visualize your budget allocation with a donut chart broken down by category (essential expenses, variable expenses, investments, fixed payments, reserves/goals)
+- **Transaction Tracking** — Record and browse expenses with swipeable transactions grouped by day
+- **Income, Investments & Goals** — Dedicated sections for managing income streams, investment portfolios, and financial goals (partially implemented)
+- **Quick Entry** — Floating action button with a calculator-style modal for fast transaction input
 
-- **Finance**: Control spendings and investment track
-<!-- - **Feature 2**: Description of feature two
-- **Feature 3**: Description of feature three
-- **Feature 4**: Description of feature four -->
+### Life Attributes
 
-## 📦 Prerequisites
+- **Attribute Dashboard** — Track six core life attributes (Physical, Mental, Social, Professional, Wellbeing, Financial) with color-coded progress bars and levels
+- **HP & XP System** — Gamified header with health points and experience points for motivation
+- **Quick Progress Updates** — Tap into any attribute to log activities and earn XP
+
+### General
+
+- **Dark & Light Themes** — Full Catppuccin theme system (Mocha for dark, Latte for light)
+- **Bilingual** — English and Portuguese (Brazilian) with automatic device locale detection
+- **Settings** — Persisted preferences for theme, language, and notifications
+- **Cross-Platform** — Runs on Android, iOS, and Web via Expo
+
+## Screenshots
+
+_Add screenshots here_
+
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
 - Node.js >= 18.0.0
-- npm >= 9.0.0 or pnpm >= 8.0.0
+- Bun (recommended) or npm
 - Git
-- Any other specific requirements
+- Android Studio (for Android builds) or Xcode (for iOS builds)
+- EAS CLI (for cloud builds)
 
-## 🚀 Installation
+## Installation
 
 ### Quick Start
 
@@ -64,262 +77,130 @@ cd hotaru
 # Install dependencies
 bun install
 
-# # Copy environment variables
-# cp .env.example .env
-
 # Run the development server
 npx expo run:android --device
 ```
 
-__NOTE: If build fails, try moving out the mobile project folder to outside of the turborepo before running ```npx expo run:android --device```, install the de dependencies with ```bum i```, and then move it in again and run the project once again__
+> **Note:** If the build fails, try moving the mobile project folder out of the monorepo temporarily, run `bun i` and `npx expo run:android --device`, then move it back.
 
-<!-- ### Docker Installation
+## Architecture
 
-```bash
-# Build the Docker image
-docker build -t hotaru .
-
-# Run the container
-docker run -p 3000:3000 hotaru
-``` -->
-
-<!-- ## 💻 Usage
-
-### Basic Usage
-
-Provide simple examples of how to use your project:
-
-```javascript
-import { YourModule } from 'hotaru';
-
-const instance = new YourModule({
-  option1: 'value1',
-  option2: 'value2'
-});
-
-instance.doSomething();
-```
-
-### Advanced Usage
-
-Show more complex examples with detailed explanations:
-
-```javascript
-// More sophisticated example
-const result = await instance.advancedMethod({
-  configuration: {
-    nested: 'options'
-  }
-});
-``` -->
-
-<!-- ## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Application
-APP_NAME=hotaru
-NODE_ENV=development
-PORT=3000
-
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-
-# API Keys
-API_KEY=your-api-key
-API_SECRET=your-api-secret
-```
-
-### Configuration File
-
-Explain any configuration files and their options:
-
-```json
-{
-  "setting1": "value1",
-  "setting2": {
-    "nested": "value2"
-  }
-}
-``` -->
-
-## 🏗️ Architecture
-
-Describe your project's architecture and structure:
+### Project Structure
 
 ```
 project-root/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── apps/           # Screen components
-│   ├── utils/          # Utility functions
-│   └── types/          # TypeScript types
-└── public/             # Static assets
+├── apps/
+│   └── mobile/
+│       ├── src/
+│       │   ├── app/            # File-based routing (expo-router)
+│       │   │   ├── (tabs)/     # Main tab navigation group
+│       │   │   └── (finance)/  # Finance sub-route stack
+│       │   ├── components/     # Reusable UI components
+│       │   ├── contexts/       # React Context providers (Theme, Language)
+│       │   ├── i18n/           # Internationalization (en/pt)
+│       │   ├── hooks/          # Custom React hooks
+│       │   ├── lib/            # Utility libraries
+│       │   ├── constants/      # App-wide constants (colors, dimensions)
+│       │   └── assets/         # Fonts, icons, splash screens
+│       ├── android/            # Android native project
+│       ├── app.json            # Expo configuration
+│       ├── tailwind.config.js  # NativeWind/Tailwind configuration
+│       └── metro.config.js     # Metro bundler configuration
+├── packages/                   # Shared packages (monorepo)
+└── package.json                # Turborepo workspace root
 ```
 
 ### Key Design Decisions
 
-Explain important architectural choices and patterns used in the project.
+- **File-based routing** via `expo-router` for intuitive navigation structure
+- **Compound component pattern** across UI components (Header, Modal, Card, Button, etc.) for flexible composition
+- **Catppuccin color system** for consistent, themeable design tokens
+- **NativeWind (Tailwind CSS)** for familiar, utility-first styling in React Native
+- **RPG gamification** — life attributes are mapped to game-like mechanics (HP, XP, levels) to make tracking engaging
 
-<!-- ## 📚 API Documentation
+## Tech Stack
 
-### Endpoints
+| Category | Technology |
+|---|---|
+| **Framework** | Expo SDK 54, React 19, React Native 0.81 |
+| **Routing** | expo-router 6 (with React Navigation) |
+| **Styling** | NativeWind 4 + Tailwind CSS |
+| **Animation** | React Native Reanimated 4, Gesture Handler |
+| **i18n** | i18n-js + expo-localization |
+| **Storage** | expo-sqlite, AsyncStorage |
+| **Icons** | lucide-react-native, @expo/vector-icons |
+| **Carousel** | react-native-reanimated-carousel |
+| **Monorepo** | Turborepo |
 
-#### GET `/api/resource`
+## Development
 
-Retrieve all resources.
-
-**Parameters:**
-- `limit` (optional): Number of items to return
-- `offset` (optional): Pagination offset
-
-**Response:**
-```json
-{
-  "data": [],
-  "total": 100,
-  "limit": 10,
-  "offset": 0
-}
-```
-
-#### POST `/api/resource`
-
-Create a new resource.
-
-**Request Body:**
-```json
-{
-  "name": "Resource Name",
-  "description": "Resource description"
-}
-```
-
-**Response:**
-```json
-{
-  "id": "123",
-  "name": "Resource Name",
-  "createdAt": "2024-01-01T00:00:00Z"
-} -->
-```
-
-## 🔧 Development
-
-### Setting Up Development Environment
+### Setting Up
 
 ```bash
-# Install development dependencies
+# Install dependencies
 bun install
+
+# Start Expo dev server
+npx expo start
+
+# Run on Android device
+npx expo run:android --device
+
+# Run on iOS simulator
+npx expo run:ios
 ```
 
-<!-- ### Scripts
+### Project Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run test` - Run tests
-- `npm run lint` - Lint code
-- `npm run format` - Format code with Prettier
+| Command | Description |
+|---|---|
+| `bun install` | Install all dependencies |
+| `npx expo start` | Start development server |
+| `npx expo run:android --device` | Build and run on Android device |
+| `npx expo run:ios` | Build and run on iOS simulator |
 
 ### Code Style
 
-This project follows the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript). Code is automatically formatted using Prettier and linted with ESLint. -->
+The project uses ESLint for linting and follows TypeScript best practices.
 
-<!-- ## 🧪 Testing
+## Deployment
 
-### Running Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run specific test file
-npm test path/to/test.spec.ts
-```
-
-### Writing Tests
-
-Example test structure:
-
-```javascript
-describe('Component/Function Name', () => {
-  it('should do something specific', () => {
-    // Arrange
-    const input = 'test';
-    
-    // Act
-    const result = yourFunction(input);
-    
-    // Assert
-    expect(result).toBe('expected');
-  });
-}); -->
-```
-
-## 🚢 Deployment
-
-### Production Build
+### Production Build (EAS)
 
 ```bash
-# Create production build
+# Build for Android
 eas build -p android --profile production
+
+# Build for iOS
+eas build -p ios --profile production
 ```
 
-<!-- ### Deployment Platforms
-
-#### Vercel
-
-```bash
-npm install -g vercel
-vercel --prod
-``` -->
-
-<!-- #### Docker
-
-```bash
-docker build -t hotaru:latest .
-docker push your-registry/hotaru:latest
-``` -->
-
-### Environment-Specific Configuration
-
-Explain any differences between development, staging, and production environments.
-
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+3. Commit your changes (`git commit -m 'feat(scope): add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ### Contribution Guidelines
 
-- Write clear, descriptive commit messages
+- Write clear, descriptive commit messages following conventional commits
 - Add tests for new features
 - Update documentation as needed
 - Follow the existing code style
 - Ensure all tests pass before submitting PR
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 **Issue: Installation fails with dependency errors**
 
-Solution: Clear your package manager cache and try again:
+Clear cache and reinstall:
+
 ```bash
 cd android/
 ./gradlew clean
@@ -329,48 +210,30 @@ bun install
 
 **Issue: Port already in use**
 
-Solution: Change the port in your `.env` file or kill the process using the port:
+Kill the process occupying the port:
+
 ```bash
 lsof -ti:8081 | xargs kill
 ```
 
-<!-- ### Getting Help
+## License
 
-- Check existing [GitHub Issues](https://github.com/luk3mn/hotaru/issues)
-- Join our [Discord community](https://discord.gg/your-invite)
-- Read the [detailed documentation](https://docs.yourproject.com) -->
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-<!-- ## ❓ FAQ
-
-**Q: Question one?**
-
-A: Answer to question one.
-
-**Q: Question two?**
-
-A: Answer to question two.
-
-**Q: How do I report a bug?**
-
-A: Please open an issue on GitHub with detailed information about the bug, including steps to reproduce it. -->
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📧 Contact
+## Contact
 
 - **Author**: Lucas Renan
 - **Email**: lucasnunes2030@gmail.com
 - **GitHub**: [@luk3mn](https://github.com/luk3mn)
 - **Website**: [https://lucasmaues.vercel.app/](https://lucasmaues.vercel.app/)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Credit to libraries or resources used
-- Thanks to contributors
-- Inspiration sources
+- [Catppuccin](https://github.com/catppuccin/catppuccin) — Beautiful pastel color palette
+- [Expo](https://expo.dev/) — The best React Native framework
+- [Lucide Icons](https://lucide.dev/) — Community-ran fork of Feather Icons
+- Thanks to all contributors and early testers
 
 ---
 
-Made with by [Your Name](https://github.com/luk3mn)
+Made with by [Lucas Renan](https://github.com/luk3mn)
